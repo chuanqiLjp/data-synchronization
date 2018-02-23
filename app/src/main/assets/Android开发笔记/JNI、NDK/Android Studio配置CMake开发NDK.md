@@ -1,11 +1,11 @@
  [1.eclipse中的Jni开发流程（一）](http://blog.csdn.net/wo_ha/article/details/53687903)
  [2.eclipse中的Jni开发流程（二）](http://blog.csdn.net/wo_ha/article/details/53715936)
   [3.Android Studio配置CMake开发NDK](http://blog.csdn.net/wo_ha/article/details/78131635)
-#1.在SDK Tools中勾选安装CMake、LLDB、NDK
+# 1.在SDK Tools中勾选安装CMake、LLDB、NDK
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4143664-e9531961f5c65186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#2.配置一些快捷方式
+# 2.配置一些快捷方式
 ###参数讲解
 ```
     javah   用于生成头文件
@@ -22,7 +22,7 @@
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4143664-5a1438d28dbe723c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4143664-2a6c6bcc5c069069.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-#3.在工程的local.properties文件中配置NDK的目录
+# 3.在工程的local.properties文件中配置NDK的目录
 ```
 sdk.dir=C\:\\Users\\yuxue\\AppData\\Local\\Android\\sdk
 ndk.dir=C\:\\Users\\yuxue\\AppData\\Local\\Android\\sdk\\ndk-bundle
@@ -33,11 +33,11 @@ ndk.dir=C\:\\Users\\yuxue\\AppData\\Local\\Android\\sdk\\ndk-bundle
 也可以使用图形界面，单击模块选择Open Moude Setting，选择好NDK的路径
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4143664-f57aac9b51c62945.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-#4.编译时如果检查NDK过时了可以在gradle.properties文件中增加“android.useDeprecatedNdk=true”使它可以使用过时的NDK
+# 4.编译时如果检查NDK过时了可以在gradle.properties文件中增加“android.useDeprecatedNdk=true”使它可以使用过时的NDK
 ```
 android.useDeprecatedNdk=true
 ```
-#5.创建CMakeLists.txt文件并放在模块的的根目录
+# 5.创建CMakeLists.txt文件并放在模块的的根目录
 ```
 # 设置构建本地库所需的最小版本的cbuild。
 cmake_minimum_required(VERSION 3.4.1)
@@ -67,7 +67,7 @@ target_link_libraries( natave-lib     #指定目标库中。与 add_library的�
                        ${log-lib}    # 将目标库链接到日志库包含在NDK。
                         )
 ```
-#6.在模块的build.gradle文件中添加
+# 6.在模块的build.gradle文件中添加
 ```
 android {
     compileSdkVersion 26
@@ -89,12 +89,12 @@ android {
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4143664-630ad87d7a0c9440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#7.编写Java中的Native方法
+# 7.编写Java中的Native方法
 ```
     public native  String getStr();
     public native  String gethelloJniStr();
 ```
- #8.生成C的头文件
+ # 8.生成C的头文件
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4143664-82edca6bbcdda37c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
  生成后
@@ -117,7 +117,7 @@ jobject jobject1){
 
  至此，这个项目就可以运行了
 
-#更多的学习
+# 更多的学习
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4143664-72bdd9f8f072b8d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ```
@@ -150,9 +150,9 @@ target_link_libraries(# 指定目标库，与上面指定的函数库名一致
                   # 链接的库，根据log-lib变量对应liblog.so函数库
                   ${log-lib} )
 ```
-######通过查看native-lib.cpp方法，stringFromJNI目的是向Java层返回一个字符串。如果要在native-lib.cpp文件中添加新的方法，必须添加在extern"C" { } 中，或者在每个方法前加extern"C", 否则会报找不到方法。如果源文件为C，则须将extern“C”部分去掉，因为extern "C"的作用就是告诉编译器以C方式编译。
+###### 通过查看native-lib.cpp方法，stringFromJNI目的是向Java层返回一个字符串。如果要在native-lib.cpp文件中添加新的方法，必须添加在extern"C" { } 中，或者在每个方法前加extern"C", 否则会报找不到方法。如果源文件为C，则须将extern“C”部分去掉，因为extern "C"的作用就是告诉编译器以C方式编译。
 
-###JNI开发打印日志
+### JNI开发打印日志
 ```
 #include <android/log.h>
 #define LOG_TAG "System.out.c"
@@ -170,7 +170,7 @@ LOG的使用
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4143664-652ac51a570a032d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###Android系统目前支持的CPU架构
+### Android系统目前支持的CPU架构
 ```
 ARMv5，ARMv7 (从2010年起)
 x86 (从2011年起)

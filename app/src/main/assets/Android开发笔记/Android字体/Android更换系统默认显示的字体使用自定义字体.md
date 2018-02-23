@@ -1,7 +1,7 @@
 ### 序言
 上一篇[Android 自定义字体，更换系统默认显示的字体使用自定义字体](https://www.jianshu.com/p/282716d73c6a)有讲到怎样指定控件显示指定字体，怎样整个软件显示指定字体，怎样WebView加载指定字体，但是还留下一个怎样修改整个系统的默认字体，由于内容较多，所以单独抽离出来讲，由于要操作系统文件，因此需要Root权限或系统签名，自己在操作前建议先备份下字体配置文件/system/etc/system_fonts.xml和/system/etc/fallback_fonts.xml，否则操作失败有可能开机后无法进入桌面，此时就需要将备份的system_fonts.xml推送到对应目录下并修改为对应的权限。
 
-###版权声明：本文可被转载，但需要在醒目位置注明原文出处：https://www.jianshu.com/p/b0b541b94427
+### 版权声明：本文可被转载，但需要在醒目位置注明原文出处：https://www.jianshu.com/p/b0b541b94427
 
 # 1、字体加载原理
 - ①  Android 系统的字体文件：位于 /system/fonts/ 文件夹下，我们可以到对应的目录下进行查看，可以看出，Android的字体文件都是ttf文件，命令顺序：adb shell ——>cd /system/fonts/ ——>ll,查看结果如下图所示：
