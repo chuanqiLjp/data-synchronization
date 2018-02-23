@@ -1,10 +1,10 @@
-###序言：
+### 序言：
 
 可以免费下载字体的网站：[字体下载大宝库](http://font.knowsky.com/)；[找字网](http://www.zhaozi.cn/)
 还有一个字体编辑软件：[FontCreator9.0绿色汉化特别版](http://www.zhaozi.cn/html/prog/47.html)
 可以自定义字体的第三方库：[Calligraphy](https://github.com/chrisjenx/Calligraphy)
 
-###版权声明：本文可被转载，但需要在醒目位置注明原文出处：https://www.jianshu.com/p/282716d73c6a
+### 版权声明：本文可被转载，但需要在醒目位置注明原文出处：https://www.jianshu.com/p/282716d73c6a
 
 
 
