@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>测试问卷调查</title>
+    <script type="text/javascript">
+	 	function check_submit(){//提交按钮的响应，组件JSON字符串
+	 		var jsonStr="测试数据";
+	 		var issueList=document.getElementsByName("issue");
+	 		var jsonArr=[];//定义一个json数组
+	 		for (var i = 0; i < issueList.length; i++) {
+	 			var jsonObj={};//定义一个json对象
+	 			jsonObj.Num=parseInt(issueList[i].getAttribute("id"));//获取到div标签的ID
+	 			jsonObj.Name=issueList[i].getElementsByTagName("h3")[0].innerHTML;
+	 			// jsonObj.Name="这是问题内容";
+	 			var awsers=issueList[i].getElementsByTagName("input");//获取到全部的答案列表
+	 			for (var j = 0; j < awsers.length; j++) {//遍历答案列表
+	 				if (awsers[j].getAttribute("value")=="A"&&awsers[j].checked==true) {
+	 					jsonObj.A=1;
+	 				}
+	 				if (awsers[j].getAttribute("value")=="B"&&awsers[j].checked==true) {
+	 					jsonObj.B=1;
+	 				}
+	 				if (awsers[j].getAttribute("value")=="C"&&awsers[j].checked==true) {
+	 					jsonObj.C=1;
+	 				}
+	 				if (awsers[j].getAttribute("value")=="D"&&awsers[j].checked==true) {
+	 					jsonObj.D=1;
+	 				}
+	 				if (awsers[j].getAttribute("value")=="E"&&awsers[j].checked==true) {
+	 					jsonObj.E=1;
+	 				}
+	 				if (awsers[j].getAttribute("value")=="F"&&awsers[j].checked==true) {
+	 					jsonObj.F=1;
+	 				}
+	 				if (awsers[j].getAttribute("value")=="G"&&awsers[j].checked==true) {
+	 					jsonObj.G=1;
+	 				}
+	 			}
+	 			jsonArr.push(jsonObj);//插入数组
+	 		}
+	 		jsonStr=JSON.stringify(jsonArr);//将JSON数组转换为JSON字符串
+	 		alert(jsonStr);
+      		JsClient.submit(jsonStr);//传值
+	 	}
+
+    </script>
+    <style type="text/css">
+        ul{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+<div name="issue" id="1">
+    <ul>
+        <h3 name="1">问题1：您现在的存款有多少？</h3>
+        <li><input type="radio" name="1" value="A">A、低于5万</li>
+        <li><input type="radio" name="1" value="B">B、5万</li>
+        <li><input type="radio" name="1" value="C">C、20万</li>
+        <li><input type="radio" name="1" value="D">D、高于50万</li>
+    </ul>
+</div>
+<div name="issue" id="2">
+    <ul>
+        <h3  name="2">问题2：您现在的存款有多少？</h3>
+        <li><input type="radio" name="2" value="A">A、低于5万</li>
+        <li><input type="radio" name="2" value="B">B、5万</li>
+        <li><input type="radio" name="2" value="C">C、20万</li>
+        <li><input type="radio" name="2" value="D">D、高于50万</li>
+    </ul>
+</div>
+<div name="issue" id="3">
+    <ul>
+        <h3 name="3">问题3：您现在的存款有多少？</h3>
+        <li><input type="radio" name="3" value="A">A、低于5万</li>
+        <li><input type="radio" name="3" value="B">B、5万</li>
+        <li><input type="radio" name="3" value="C">C、20万</li>
+        <li><input type="radio" name="3" value="D">D、高于50万</li>
+    </ul>
+</div>
+<div name="issue" id="4">
+    <ul>
+        <h3 name="4">问题4：您现在的存款有多少？</h3>
+        <li><input type="checkbox" name="4" value="A">A、低于5万</li>
+        <li><input type="checkbox" name="4" value="B">B、5万</li>
+        <li><input type="checkbox" name="4" value="C">C、20万</li>
+        <li><input type="checkbox" name="4" value="D">D、高于50万</li>
+        <li><input type="checkbox" name="4" value="E">E、高于50万</li>
+        <li><input type="checkbox" name="4" value="F">F、高于50万</li>
+        <li><input type="checkbox" name="4" value="G">G、高于50万</li>
+    </ul>
+</div>
+<div name="issue" id="5">
+    <ul>
+        <h3 name="5">问题5：您现在的存款有多少？</h3>
+        <li><input type="radio" name="5" value="A">A、低于5万</li>
+        <li><input type="radio" name="5" value="B">B、5万</li>
+        <li><input type="radio" name="5" value="C">C、20万</li>
+        <li><input type="radio" name="5" value="D">D、高于50万</li>
+        <li><input type="radio" name="5" value="E">E、高于50万</li>
+        <li><input type="radio" name="5" value="F">F、高于50万</li>
+        <li><input type="radio" name="5" value="G">G、高于50万</li>
+    </ul>
+</div>
+<div style="text-align:center">
+    <input type="submit" name="sub" value="提交" onClick="check_submit()">
+</div>
+</body>
+</html>
