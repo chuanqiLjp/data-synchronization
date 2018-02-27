@@ -21,7 +21,7 @@
 19、git diff：查看代码做的改动
 
 
-
+![Git的思维导图](http://upload-images.jianshu.io/upload_images/4143664-f920dc28e2e56b98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrevcommit --date=relative
 
