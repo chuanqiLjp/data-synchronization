@@ -68,19 +68,16 @@ Android是基于Linux内核，其核心系统服务如安全性、内存管理�
 
 在Activity的生命周期中，如下的方法会被系统回调：
 
-onCreate(Bundle savedInstanceState)            Activity被创建时调用。
+|   方法名     |      方法备注   |
+|  -----------|:-------------:|
+|  onCreate(Bundle savedInstanceState)	|	Activity被创建时调用。|
+|  onStart()	|	Activity已经启动，未获取到焦点，还不可以与用户进行交互。|
+|  onResume()	|	当Activity可见，已获取到焦点可以与用户交互。  |
+|  onPause()	|	暂停Activity时被调用，调用了该方法后，Activity变得不可交互即失去焦点但仍然可见，可恢复至onResume()。  |
+|  onStop()	    |	停止Activity时被调用，Activity变得不可见,可恢复至onRestart()。  |
+|  onDestroy()	|	销毁Activity时被调用。  |
+|  onRestart()	|	重启Activity时被调用，当Activity从不可见重新变为可见时，就会调用该方法。  |
 
-onStart()					  Activity已经启动，但还不可以与用户进行交互。
-
-onResume()					  当Activity可见，并准备与用户交互。
-
-onPause()				  	  暂停Activity时被调用，调用了该方法后，Activity变得不可交互。
-
-onStop()					  停止Activity时被调用，Activity变得不可见。
-
-onDestroy()					  销毁Activity时被调用。
-
-onRestart()					  重启Activity时被调用，当Activity从不可见重新变为可见时，就会调用该方法。
 ![image.png](http://upload-images.jianshu.io/upload_images/4143664-52195a6c5378e50a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![image.png](http://upload-images.jianshu.io/upload_images/4143664-51aedd04cd5ab89b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
