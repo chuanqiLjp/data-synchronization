@@ -1,3 +1,5 @@
+原文出处：[MVC，MVP 和 MVVM 的图示](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)
+
 复杂的软件必须有清晰合理的架构，否则无法开发和维护。
 
 [MVC](http://zh.wikipedia.org/wiki/MVC)（Model-View-Controller）是最常见的软件架构之一，业界有着广泛应用。它本身[很容易理解](http://www.ruanyifeng.com/blog/2007/11/mvc.html)，但是要讲清楚，它与衍生的 MVP 和 MVVM 架构的区别就不容易了。
