@@ -27,7 +27,7 @@
 
 <h2 id="Android系统架构">Android 系统架构</h2>
 
-![framework](images/framework.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-badb8423ded73944.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 1.应用程序层
 
@@ -81,10 +81,11 @@ onStop()					  停止Activity时被调用，Activity变得不可见。
 onDestroy()					  销毁Activity时被调用。
 
 onRestart()					  重启Activity时被调用，当Activity从不可见重新变为可见时，就会调用该方法。
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-52195a6c5378e50a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![pic1](/images/activity1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-51aedd04cd5ab89b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![pic2](/images/activity2.png)
+
 
 **横竖屏切换时候activity的生命周期?**
 A. 不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，切横屏时会执行一次，切竖屏时会执行两次
@@ -130,7 +131,8 @@ C. 设置Activity的android:configChanges="orientation|keyboardHidden"时，切�
 
 <h2 id="Fragment的生命周期">Fragment的生命周期</h2>
 
-![fragment1](images/fragment1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-10c71700762e5df8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 onAttach()：执行该方法时，Fragment与Activity已经完成绑定，该方法有一个Activity类型的参数，代表绑定的Activity，这时候可以执行诸如mActivity = activity的操作。
 
@@ -156,7 +158,8 @@ onDetach()：解除与Activity的绑定。在onDestroy方法之后调用。
 
 与Activity的声明周期进行对比：
 
-![fragment2](images/fragment2.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-a9eddb3c4723147f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 [回到目录](#index)
 
@@ -266,7 +269,8 @@ Service有两类：
 
 Service生命周期图一：
 
-![service1](/images/service1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-d3b2d957285081da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 通过start方式启动Service，则生命周期函数调用为：
 context.startService() ->onCreate()- >onStartCommand()->Service running--调用context.stopService() ->onDestroy()
@@ -276,10 +280,12 @@ context.bindService()->onCreate()->onBind()->Service running--调用>onUnbind() 
 
 Service生命周期图二：
 
-![service2](/images/service2.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-6e1d2a11ae24320e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 Service生命周期图三：
-![service3](/images/service3.PNG)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-4d309d8e66189fef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 **同一服务，多次使用start()启动时**
@@ -304,7 +310,8 @@ Service生命周期图三：
 
 SQLiteOpenHelper包含以下常用方法：
 
-![sqlite1](images/sqlite1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-2768e2812924b333.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 一般使用SQLite的方法是，创建一个继承SQLiteOpenHelper的类，重写`onCreate`和`onUpdate` 方法，如下示例所示：
 
@@ -331,7 +338,8 @@ public class MyDbHelper extends SLiteOpenHelper{
 
 SQLiteDatabase代表一个数据库对象，SQLiteDatabase提供了如下静态方法来打开一个数据库文件：
 
-![sqlite2](images/sqlite2.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-26262f5cf5cf6849.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 在程序中获取了SQLiteDatabase数据库对象之后，就可以调用SQLiteDatabase的如下方法来操作数据库：
 
@@ -345,7 +353,8 @@ SQLiteDatabase代表一个数据库对象，SQLiteDatabase提供了如下静态�
 
 Cursor 是查询到的数据条目的集合，相当于JDBC中的ResultSet。Cursor使用如下方法来移动查询结果的记录指针：
 
- ![sqlite3](images/sqlite3.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-844474b9b0a9abfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 可调用SQLiteDatabase中的如下方法来获取Cursor：
 
@@ -391,7 +400,9 @@ db.close();
 
 而Android采用的是Binder。**Binder基于Client-Server通信模式，传输过程只需一次拷贝，为发送发添加UID/PID身份，既支持实名Binder也支持匿名Binder，安全性高。**
 
-### 1.从进程角度看IPC机制：![binder5](images/binder5.png)
+### 1.从进程角度看IPC机制：
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-5c1a75aaead4bae9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 Linux中，为了保证内核安全，用户空间不能直接操作内核，从而将进程分为**用户空间和内核空间** 。对于用户空间，不同进程之间是不能彼此共享的，而对于内核空间，不同进程是可以共享的。在Binder机制中，Client进程向Server进程通信，本质上就是利用**内核空间可共享的原理** 。
 
@@ -421,17 +432,20 @@ Binder通信采用客户端/服务端的架构，Binder定义了四个角色：S
 
   ​	服务代理是指**在客户端应用程序中生成的Server代理** (Proxy)，从应用程序的角度看，代理对象和本地对象没有差别，都可以调用其方法，方法都是同步的，并且返回相应的结果。服务代理也是Binder机制的核心模块。
 
-![binder6](images/binder6.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-99a8f18c1cc572da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 Binder是Android中的一个类，它实现了IBinder接口，从Android应用层来说，Binder是**客户端与服务端进行通信的媒介**(代理)，当bindService的时候，服务端就返回一个包含服务端业务的Binder对象， 通过这个Binder对象，客户端就可以获取**服务端提供的服务或者数据**，这里的服务包括普通服务和基于AIDL的服务。
 
 ### 3.Binder通讯流程
 
-![binder3](images/binder3.PNG)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-03f10a3be4e9fcc0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 Binder工作机制
 
-![binder4](images/binder4.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-0eb3b50ec14f27b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ### Binder实例分析
 
@@ -454,11 +468,13 @@ wm.addView(view,layoutParams);
 
 **Binder系统架构图**:
 
-![img](images/binder1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-c549f10128eeedb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 **Binder各组件之间的关系：**
 
-![binder2](/images/binder2.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-663e10e0f1425df3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ****
 
@@ -824,7 +840,8 @@ s.close();
 
 <h2 id="View的绘制流程">View的绘制流程</h2>
 
-![view1](images/view1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-11102394b5e1a704.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 
@@ -929,7 +946,8 @@ public void onMeasure(int widthMeasureSpec,int heightMeasureSpec){
 
 `requestLayout()` 和`invalidate() ` 的区别如下：
 
-![view2](images/view2.jpg)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-9b1bbd82cd69d198.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 三、布局onLayout()。（只有自定义ViewGroup需要这一步。自定义View不需要）
 
@@ -982,25 +1000,30 @@ onDraw()中不建议进行`new` 操作，这样会减慢速度。
 * `public boolean onInterceptTouchEvent(MotionEvent event)`
 * `public boolean onTouchEvent(MotionEvent event) `
 
-![view3](images/view3.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-d9e79541b3f55fe8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 只有ViewGroup才能对事件进行拦截：
 
-![view4](images/view4.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-8867a04c1eab0525.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 
 如果Activity的所有子View都不处理事件，则最后会调用Activity的onTouchEvent():
 
-![view5](images/view5.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-403e54eb89afd852.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 如果在最底层View处理：
 
-![view6](images/view6.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-6523dd3491214c42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 如果在中途View处理了该事件，则不会继续向下进行事件分发：
 
-![view7](images/view7.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-057a4d507a2a696e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 当一个View需要处理某个事件时，如果设置了OnTouchListener，则OnTouchListener中的`onTouch()` 方法会先调用，返回true则代表处理完成，就不会再交给`onTouchEvent()` 了。如果在`onTouch()`中返回false，表示没有处理该事件，则才会调用`onTouchEvent()` ，在onTouchEvent()中，如果设置有OnClickListener，那么它的`onClick()` 会被调用。优先级：onTouchListener-->onTouchEvent()-->OnClickListener。
 
@@ -1024,7 +1047,8 @@ onDraw()中不建议进行`new` 操作，这样会减慢速度。
 
 逐帧动画放在/drawable文件夹下，逐帧动画的语法：
 
-![anim1](images/anim1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-91691e2c926b2603.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 每一个`<item>` 都对应着一帧。
 
@@ -1059,7 +1083,8 @@ anim.stop();
 
 补间动画语法：
 
-![anim3](images/anim3.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-adf99786d2adaad0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 使用示例：
 
@@ -1099,7 +1124,8 @@ ValueAnimator是属性动画的“时间引擎”，它负责计算各个帧的�
 
 ValueAnimator使用示例：
 
-![anim4](images/anim4.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-47941f9041bfdf99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 * public static ValueAnimator ofInt (int… values)：ofInt方法与ofFloat方法很类似，只不过ofInt方法接收int类型的值，ofInt方法内部使用了IntEvaluator，其使用可参考上面ofFloat的使用代码。
 * public static ValueAnimator ofArgb (int… values)：该方法接收一系列代表了颜色的int值，其内部使用了ArgbEvaluator，可以用该方法实现将一个颜色动画渐变到另一个颜色，我们从中可以不断获取中间动画产生的颜色值。
@@ -1120,7 +1146,8 @@ ObjectAnimator中常用的方法有：
 
 使用示例：
 
-![anim5](images/anim5.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-568d575f19564e98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 4.AnimatorSet
 
@@ -1344,7 +1371,8 @@ ServiceConnection conn = new ServiceConnection(){
 
 Android应用程序框架层中的ActivityManagerService启动Activity的过程大致如下图所示：
 
-![activity3](images/activity3.jpg)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-e9ff05352fc980c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ActivityManagerService和ActivityStack位于同一个进程中，而ApplicationThread和ActivityThread位于另一个进程中。其中，
 
@@ -1436,19 +1464,23 @@ ThreadLocal是一个**线程内部的数据存储类** ，实质上是一个泛�
 
 ThreadLocal中有一个内部类ThreadLocalMap，ThreadLocal中有一个内部类Entry，Entry中的`Object value `这个value实际上就是每一个线程中的数据副本。ThreadLocalMap中有一个存放Entry的数组：`Entry[] table`。 ThreadLocal类的部分代码如下：
 
-![handler1](images/handler1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-db1a4ebe6460dbe3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ThreadLocal的`set` 方法：实际上就是往ThreadLocalMap对象(map)维护的对象数组table中插入数据。
 
-![handler2](images/handler2.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-35ad6771977585e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ThreadLocal的`get` 方法，调用了ThreadLocalMap的getEntry()方法：
 
-![handler3](images/handler3.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-5e5d85fe37f8571f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ThreadLocalMap的`getEntry()` 方法:
 
-![handler4](images/handler4.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-e2d84bb835c90205.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 i的值是由线程的哈希码和（table的长度-1）进行“按位与”运算，所有每个线程得到的i是不一样的，因此最终数据副本在table中的位置也不一样。
 
@@ -1462,21 +1494,26 @@ Looper在Android的消息机制中扮演着消息循环的角色，它会不停�
 
 Looper中的几个重要的成员变量：
 
-![looper](images/looper.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-5c261017b760ee4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 Looper的构造方法，在构造方法中，创建了一个**MessageQueue** 实例：
 
-![looper1](images/looper1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-77da9ca8a0784b14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 当需要为一个线程创建Looper对象时，需要调用Looper的`prepare()` 方法（该方法在一个线程中只能调用一次，否则会抛出异常）：
 
-![looper2](images/looper2.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-ef2fa558dea89459.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 在`loop()` 的消息循环中，实际上是调用了MessageQueue的**next()** 方法。
 
-![looper3](images/looper3.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-1cc5887a85ec0902.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![looper4](images/looper4.png)
+
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-25d050169cc47b9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 Looper主要作用：
 1、	与当前线程绑定，保证一个线程只会有一个Looper实例，同时一个Looper实例也只有一个MessageQueue。
@@ -1488,18 +1525,18 @@ Handler的工作主要是消息的发送和消息接收处理。消息的发送�
 
 Handler的sendMessage()函数：
 
-![handler5](images/handler5.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-96245925d6a7f74a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![handler6](images/handler6.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-30c0909c09a9e66b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-28afde61566ded9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![handler7](images/handler7.png)
 
 最后调用了MessageQueue的`enqueueMessage()` 函数：
 
-![handler8](images/handler8.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-26b87b7548a39bfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![handler9](images/handler9.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-3b7d2c3b782f8645.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 Message 的callback成员变量实际上是一个**Runnable对象** ：
 
@@ -1544,22 +1581,26 @@ JAVA程序的执行过程：
 * 字节码文件在执行前，先经过类加载机制（加载、连接、初始化）
 * 在执行时，字节码文件经过Java虚拟机来执行，Java虚拟机在这个过程中做的工作有：为代码进行机器相关优化和非机器相关的优化，寄存器分配，生成目标代码。
 
-![jvm1](images/jvm1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-bc0af1a971628389.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 当启动一个java程序时，一个虚拟机实例就诞生了，当程序结束时，这个虚拟机实例也消亡。
 
 Java虚拟机包含一个类加载器（class loader），它可以从程序和API中加载class文件，Java API中只有程序执行时需要的类才会加载。
-![jvm2](images/jvm2.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-8607520b08b80dc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 Java虚拟机数据类型：
-![jvm3](images/jvm3.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-d1df36f64aa533d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 包括两类数据类型：
 * 基本类型：char ,byte,short,int ,long,float,double,boolean,还有一个**returnAddress** ，returnAddress 数据类型被用来实现Java程序中的finally 字句，它的值执行一条虚拟机指令的操作码。比如，在一段代码中，一个`try` 包含了两个`catch` 块，returnAddress是用来标记fanally块执行完后返回的位置，如果后面不使用returnAddress，则finally块执行完就不知道要返回到哪里了。
 * 引用类型：类类型，接口类型，数组类型。
 
 #### JVM体系结构：
-![jvm4](images/jvm4.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-b7ae894eea396724.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 1.class文件：包含了关于类或接口的所有信息，class文件的基本类型如下：
 u1 ：代表1个字节，无符号类型
 u2 ：代表2个字节，无符号类型
@@ -1663,10 +1704,12 @@ Java本地接口，也叫JNI（Java Native Interface），是为可移植性准�
 
 #### Dalvik虚拟机架构
 
-![dalvik1](images/dalvik1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-4ab8f9c30b40c529.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 #### Android应用的编译以及运行流程
-![dalvik2](images/dalvik2.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-446c233a3d9106b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 一个Android应用程序源码，需要经过如下步骤，才可以运行在Dalvik虚拟机中：
 * 首先将Java代码编译成标准的Java字节码(.class文件)。
 * 使用dx工具将class文件转换为.dex文件
@@ -1690,12 +1733,14 @@ Zygote在使用fork机制时有三种不同的方式，分别是：
 
 * `forkSystemServer()`  ：Fork一个系统服务进程。
 
-  ![dalvik3](images/dalvik3.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-8d712bdaddeaadae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 #### Dalvik内存管理
 Dalvik的内存管理需要依赖Linux的内存管理机制，垃圾回收是采用了标记-清除法，使用标志位来标识内存中的对象是否正在使用。Dalvik是采用 **分离式的标志位方案**：
-![dalvik4](images/dalvik4.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-d2a38de06c379777.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 ### ART -- Android Runtime
@@ -1711,7 +1756,8 @@ Dalvik的内存管理需要依赖Linux的内存管理机制，垃圾回收是采
 应用在安装时，ART虚拟机就把应用程序安装包中的.odex字节码翻译成本地机器码，之后再次打开应用时，执行的都是本地机器码，因此执行效率更快，启动更快。
 
 #### 打包安装运行简化流程
-![dalvik5](images/dalvik5.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-00f4d7f0a267e8cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ART的优点
 * 系统性能显著提升。
@@ -1729,7 +1775,8 @@ ART的缺点
 <h2 id="Android开机启动流程">Android开机启动流程</h2>
 
 Android 开机过程可分为两个阶段，第一个阶段是Linux的启动，第二个阶段才是Android的启动。
-![boot2](images/boot2.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-20d420addf064987.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ### 启动过程分析：
 1. Boot Rom：当长按开机键时，引导芯片开始从固化在ROM的预设代码开始执行，然后加载引导程序到RAM。
@@ -1768,7 +1815,8 @@ public static void main(String argv[]) {
 
 7. Home Activity：即手机的"桌面"界面，当ActivityManagerService开启之后，会调用`finishBooting()`，同时发送广播`ACTION_BOOT_COMPLETED` 。
 
-![boot1](images/boot1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-fe9ee676469bc08c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 [回到目录](#index)
 
@@ -1866,7 +1914,8 @@ Java Api提供了两种方法加载一个so库：
 
 JNI编程中，动态注册的native方法必须要实现`JNI_OnLoad` 方法，同时实现一个JNINativeMethod[]数组，静态注册的native方法必须使**Java_类完整路径_方法名的格式** 。
 
-![sophix1](images/sophix1.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-2b770dd8fc382852.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 由于so库热部署实现起来约束多，于是Sophix团队放弃了So库的热部署。Sophix对于so库的修复是采取了冷启动修复的方式：
 
@@ -1908,7 +1957,8 @@ public String findLibrary(String libraryName){
 ```
 当sdk>=23时，只要把补丁so库的完整路径作为参数构造一个`Element` 对象，然后再插入到nativeLibraryElements数组最前面就可以达到修复的目的。
 
- ![Sophix2](images/sophix2.png)
+![image.png](http://upload-images.jianshu.io/upload_images/4143664-cf3dee9d2bd4bf52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 [回到目录](#index)
 
