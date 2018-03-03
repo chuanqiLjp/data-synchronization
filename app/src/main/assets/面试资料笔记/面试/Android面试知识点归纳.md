@@ -1,5 +1,5 @@
 
-<h3 id="index">目录</h3>
+<h1 id="index">目录</h1>
 
 * [Android 系统架构](#Android系统架构)
 * [Activity 生命周期](#Activity生命周期)
@@ -25,7 +25,7 @@
 * [热修复](#热修复)
 
 
-<h2 id="Android系统架构">Android 系统架构</h2>
+<h1 id="Android系统架构">Android 系统架构</h1>
 
 ![image.png](http://upload-images.jianshu.io/upload_images/4143664-badb8423ded73944.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -64,7 +64,7 @@ Android是基于Linux内核，其核心系统服务如安全性、内存管理�
 
 [回到目录](#index)
 
-<h2 id="Activity生命周期">Activity生命周期</h2>
+<h1 id="Activity生命周期">Activity生命周期</h1>
 
 在Activity的生命周期中，如下的方法会被系统回调：
 
@@ -95,7 +95,7 @@ C. 设置Activity的android:configChanges="orientation|keyboardHidden"时，切�
 [回到目录](#index)
 
 
-<h2 id="Activity的四种加载模式以及使用场景">Activity的四种加载模式以及使用场景</h2>
+<h1 id="Activity的四种加载模式以及使用场景">Activity的四种加载模式以及使用场景</h1>
 
 **standard 模式**
 
@@ -116,7 +116,7 @@ C. 设置Activity的android:configChanges="orientation|keyboardHidden"时，切�
 [回到目录](#index)
 
 
-<h2 id="如何理解Activity,View,Window三者之间的关系？">如何理解Activity，View，Window三者之间的关系？</h2>
+<h1 id="如何理解Activity,View,Window三者之间的关系？">如何理解Activity，View，Window三者之间的关系？</h1>
 打个比方。Activity像一个工匠（控制单元），Window像窗户（承载模型），View像窗花（显示视图）LayoutInflater像剪刀，Xml配置像窗花图纸。
 
 1：Activity构造的时候会初始化一个Window，准确的说是PhoneWindow。
@@ -129,7 +129,7 @@ C. 设置Activity的android:configChanges="orientation|keyboardHidden"时，切�
 
 [回到目录](#index)
 
-<h2 id="Fragment的生命周期">Fragment的生命周期</h2>
+<h1 id="Fragment的生命周期">Fragment的生命周期</h1>
 
 ![image.png](http://upload-images.jianshu.io/upload_images/4143664-10c71700762e5df8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -163,7 +163,7 @@ onDetach()：解除与Activity的绑定。在onDestroy方法之后调用。
 
 [回到目录](#index)
 
-<h2 id="Activity与Fragment通信">Activity与Fragment通信</h2>
+<h1 id="Activity与Fragment通信">Activity与Fragment通信</h1>
 
 1.Fragment从Activity获取数据
 
@@ -250,7 +250,7 @@ Fragment与Activity通信，大概归纳为：
 
 [回到目录](#index)
 
-<h2 id="Service">Service</h2>
+<h1 id="Service">Service</h1>
 
 创建自定义Service需要重写父类的如下方法：
 
@@ -302,7 +302,7 @@ Service生命周期图三：
 
 
 
-<h2 id="SQLite">SQLite</h2>
+<h1 id="SQLite">SQLite</h1>
 
 1.SQLiteOpenHelper
 
@@ -394,7 +394,7 @@ db.close();
 
 [回到目录](#index)
 
-<h2 id="Binder机制">Binder机制</h2>
+<h1 id="Binder机制">Binder机制</h1>
 
 [Linux](http://lib.csdn.net/base/linux)已经拥有的进程间通信IPC手段包括(Internet Process Connection)： 管道（Pipe）、信号（Signal）和跟踪（Trace）、插口（Socket）、报文队列（Message）、共享内存（Share Memory）和信号量（Semaphore）。
 
@@ -482,7 +482,7 @@ wm.addView(view,layoutParams);
 
 [回到目录](#index)
 
-<h2 id="IPC——跨进程通讯">IPC——跨进程通讯</h2>
+<h1 id="IPC——跨进程通讯">IPC——跨进程通讯</h1>
 
 ### Serializable接口
 
@@ -838,7 +838,7 @@ s.close();
 
 [回到目录](#index)
 
-<h2 id="View的绘制流程">View的绘制流程</h2>
+<h1 id="View的绘制流程">View的绘制流程</h1>
 
 ![image.png](http://upload-images.jianshu.io/upload_images/4143664-11102394b5e1a704.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -847,7 +847,7 @@ s.close();
 
 [回到目录](#index)
 
-<h2 id="自定义View和ViewGroup">自定义View和ViewGroup</h2>
+<h1 id="自定义View和ViewGroup">自定义View和ViewGroup</h1>
 
 一、自定义属性的声明与获取
 
@@ -992,7 +992,7 @@ onDraw()中不建议进行`new` 操作，这样会减慢速度。
 
 [回到目录](#index)
 
-<h2 id="TouchEvent事件的传递机制">TouchEvent事件的传递机制</h2>
+<h1 id="TouchEvent事件的传递机制">TouchEvent事件的传递机制</h1>
 
 点击事件的分发与以下几个方法相关：
 
@@ -1039,7 +1039,7 @@ onDraw()中不建议进行`new` 操作，这样会减慢速度。
 
 [回到目录](#index)
 
-<h2 id="Android中的三种动画">Android中的三种动画</h2>
+<h1 id="Android中的三种动画">Android中的三种动画</h1>
 
 ### 逐帧动画
 
@@ -1177,7 +1177,7 @@ AnimatorSet anim23 = new AnimatorSet();
 
 [回到目录](#index)
 
-<h2 id="滑动冲突的解决方法">滑动冲突的解决方法</h2>
+<h1 id="滑动冲突的解决方法">滑动冲突的解决方法</h1>
 
 滑动冲突分为三类：
 
@@ -1256,7 +1256,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) {
 
  [回到目录](#index)
 
-<h2 id="AIDL的使用">AIDL的使用</h2>
+<h1 id="AIDL的使用">AIDL的使用</h1>
 
 Android Interface Defining Language，Android接口定义语言。引入AIDL目的是为了实现进程间通信，尤其是在涉及多进程并发情况下的进程间通信。
 
@@ -1358,7 +1358,7 @@ ServiceConnection conn = new ServiceConnection(){
 [回到目录](#index)
 
 
-<h2 id="应用程序Activity的启动过程">应用程序Activity的启动过程</h2>
+<h1 id="应用程序Activity的启动过程">应用程序Activity的启动过程</h1>
 
 有两种操作会引发Activity的启动，
 
@@ -1397,7 +1397,7 @@ Activity的启动过程是：
 
 
 
-<h2 id="内存泄露以及优化">内存泄露以及优化</h2>
+<h1 id="内存泄露以及优化">内存泄露以及优化</h1>
 
 内存泄露：当一个对象已经不需要再使用了，本该被回收时，而有另外一个正在使用的对象持有它的引用从而导致它不能被回收，这导致本该被回收的对象不能被回收而停留在堆内存中，这就产生了内存泄漏。
 
@@ -1454,7 +1454,7 @@ Activity的`onTrimMemory(int level)` ，level有以下几个常量值：
 
 
 
-<h2 id="Handler原理">Handler原理</h2>
+<h1 id="Handler原理">Handler原理</h1>
 
 ### ThreadLocal
 
@@ -1574,7 +1574,7 @@ Message.callback(Runnable) -- >  mCallback(Callback接口实现类或Callback匿
 
 [回到目录](#index)
 
-<h2 id="JVM/Davik/ART">JVM/Davik/ART</h2>
+<h1 id="JVM/Davik/ART">JVM/Davik/ART</h1>
 ### JVM
 JAVA程序的执行过程：
 * 首先，.java文件经过Java编译器，被编译成字节码文件（.class文件），Java编译器在这个编译过程中做的任务有：语法分析、语义分析、字节码生成等。
@@ -1772,7 +1772,7 @@ ART的缺点
 
 [回到目录](#index)
 
-<h2 id="Android开机启动流程">Android开机启动流程</h2>
+<h1 id="Android开机启动流程">Android开机启动流程</h1>
 
 Android 开机过程可分为两个阶段，第一个阶段是Linux的启动，第二个阶段才是Android的启动。
 ![image.png](http://upload-images.jianshu.io/upload_images/4143664-20d420addf064987.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -1821,7 +1821,7 @@ public static void main(String argv[]) {
 [回到目录](#index)
 
 
-<h2 id="热修复">热修复</h2>
+<h1 id="热修复">热修复</h1>
 代码修复有两大主要的方案，一类是阿里系的底层替换方案，另一类是腾讯系的类加载方案。
 
 ### 底层替换方案
