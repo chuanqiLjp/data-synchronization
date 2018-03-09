@@ -1,13 +1,13 @@
 ---
 title: Android Studio配置CMake开发NDK
 layout: post
-date: 2018-09-29 10:40:58
+date: 2017-09-29 10:40:58
 comments: true
 categories:
   - Android
   - NDK、JNI
-tags: [AndroidStudio配置，CMake，NDK，JNI]
-keywords: AndroidStudio配置，CMake，NDK，JNI
+tags: [AndroidStudio配置,CMake,NDK,JNI]
+keywords: AndroidStudio配置,CMake,NDK,JNI
 description:
 ---
 
