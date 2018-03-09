@@ -1,3 +1,20 @@
+---
+title: 项目中的Html和JS使用的随便总结
+layout: post
+date: 2018-02-08 16:13:58
+comments: true
+categories:
+  - HTML
+tags: [html,项目总结]
+keywords:  html
+description: 
+---
+
+>我的简书：https://www.jianshu.com/u/c91e642c4d90
+我的CSDN：http://blog.csdn.net/wo_ha
+我的GitHub：https://github.com/chuanqiLjp
+我的个人博客：https://chuanqiljp.github.io/
+
 ### 序言：
 由于这段时间公司有个项目需要做一个问卷调查的在线生成，大概需求：可以在线添加问题、删除问题、最后生成问卷，大概的界面是：
 ![问卷调查模版生成分析.png](http://upload-images.jianshu.io/upload_images/4143664-a2ff2098ba3a5d45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -5,7 +22,6 @@
 ![image.png](http://upload-images.jianshu.io/upload_images/4143664-72978c145f1d92d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 我先总结一下这个项目中使用到的知识点，然后有兴趣的同学可以看下我的源代码是怎么实现的（还好没有涉及到公司的利益可以分享出来）
 
-###版权声明：本文可被转载，但需要在醒目位置注明原文出处：https://www.jianshu.com/p/6e4d53b7d5b7
 
 ### 1、日志打印
 ```

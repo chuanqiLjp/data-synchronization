@@ -1,3 +1,25 @@
+---
+title: Android 的进程间通信 Binder——Messenger的入门使用
+layout: post
+date: 2017-11-30 11:32:58
+comments: true
+categories:
+  - Android
+  - 进程间通信
+tags: [进程间通信,Binder,AIDL,Messenger]
+keywords: 进程间通信,Binder,AIDL,Messenger
+description:
+---
+
+>我的简书：https://www.jianshu.com/u/c91e642c4d90
+我的CSDN：http://blog.csdn.net/wo_ha
+我的GitHub：https://github.com/chuanqiLjp
+我的个人博客：https://chuanqiljp.github.io/
+
+# 版权声明：商业转载请联系我获得授权，非商业转载请在醒目位置注明出处。
+
+
+
 ###进程间通信系列
 ##### [AIDL的入门使用(一)](http://www.jianshu.com/p/00cd607b5292)
 ##### [AIDL的入门使用(二)](http://www.jianshu.com/p/5f394bf22849)

@@ -1,6 +1,27 @@
- [1.eclipse中的Jni开发流程（一）](http://blog.csdn.net/wo_ha/article/details/53687903)
- [2.eclipse中的Jni开发流程（二）](http://blog.csdn.net/wo_ha/article/details/53715936)
-  [3.Android Studio配置CMake开发NDK](http://blog.csdn.net/wo_ha/article/details/78131635)
+---
+title: eclipse中的Jni开发流程（二）——JNI简便的开发流程
+layout: post
+date: 2016-12-17 22:52:58
+comments: true
+categories:
+  - Android
+  - NDK、JNI
+tags: [eclipse配置,JNI]
+keywords: eclipse配置,JNI
+description:
+---
+
+>我的简书：https://www.jianshu.com/u/c91e642c4d90
+我的CSDN：http://blog.csdn.net/wo_ha
+我的GitHub：https://github.com/chuanqiLjp
+我的个人博客：https://chuanqiljp.github.io/
+
+# 版权声明：商业转载请联系我获得授权，非商业转载请在醒目位置注明出处。
+
+
+[1.eclipse中的Jni开发流程（一）](http://blog.csdn.net/wo_ha/article/details/53687903)
+[2.eclipse中的Jni开发流程（二）](http://blog.csdn.net/wo_ha/article/details/53715936)
+[3.Android Studio配置CMake开发NDK](http://blog.csdn.net/wo_ha/article/details/78131635)
 上一篇我们讲了JNI在eclipse中的基本开发流程，觉得有点繁杂，且没有代码提示，我们这篇讲个简单的
 ① 写java代码 使用native 声明本地方法
 -------------------------

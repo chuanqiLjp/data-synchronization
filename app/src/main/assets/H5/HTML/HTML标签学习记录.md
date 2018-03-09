@@ -1,3 +1,22 @@
+---
+title: HTML标签学习记录
+layout: post
+date: 2017-12-18 22:48:00
+comments: true
+categories:
+  - HTML
+tags: [html,笔记]
+keywords: html
+description:
+---
+
+>我的简书：https://www.jianshu.com/u/c91e642c4d90
+我的CSDN：http://blog.csdn.net/wo_ha
+我的GitHub：https://github.com/chuanqiLjp
+我的个人博客：https://chuanqiljp.github.io/
+
+# 版权声明：转载需要在醒目注明出处
+
 #序言
 整理谷歌的小弟的笔记，版权归原作者所有，本文仅作整理，原文链接：http://blog.csdn.net/lfdfhl/article/list/2
 

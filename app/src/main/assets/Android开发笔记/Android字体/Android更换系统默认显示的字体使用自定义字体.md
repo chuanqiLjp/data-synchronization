@@ -1,3 +1,24 @@
+---
+title: Android更换系统默认显示的字体使用自定义字体
+layout: post
+date: 2018-01-30 10:07:58
+comments: true
+categories:
+  - Android
+  - Android字体
+tags: [Android 自定义字体,自定义系统字体]
+keywords: Android 自定义字体,自定义系统字体
+description:
+---
+
+>我的简书：https://www.jianshu.com/u/c91e642c4d90
+我的CSDN：http://blog.csdn.net/wo_ha
+我的GitHub：https://github.com/chuanqiLjp
+我的个人博客：https://chuanqiljp.github.io/
+
+# 版权声明：转载需要在醒目注明出处
+
+
 ### 序言
 上一篇[Android 自定义字体，更换系统默认显示的字体使用自定义字体](https://www.jianshu.com/p/282716d73c6a)有讲到怎样指定控件显示指定字体，怎样整个软件显示指定字体，怎样WebView加载指定字体，但是还留下一个怎样修改整个系统的默认字体，由于内容较多，所以单独抽离出来讲，由于要操作系统文件，因此需要Root权限或系统签名，自己在操作前建议先备份下字体配置文件/system/etc/system_fonts.xml和/system/etc/fallback_fonts.xml，否则操作失败有可能开机后无法进入桌面，此时就需要将备份的system_fonts.xml推送到对应目录下并修改为对应的权限。
 

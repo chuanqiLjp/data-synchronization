@@ -1,3 +1,22 @@
+---
+title: 《Android开发艺术探索》之Android中的线程和线程池
+layout: post
+date: 2017-12-06 22:47:58
+comments: true
+categories:
+  - Android
+  - 读书学习
+tags: [笔记,Android开发艺术探索,线程池]
+keywords: 笔记,Android开发艺术探索,线程池
+description:
+---
+
+>我的简书：https://www.jianshu.com/u/c91e642c4d90
+我的CSDN：http://blog.csdn.net/wo_ha
+我的GitHub：https://github.com/chuanqiLjp
+我的个人博客：https://chuanqiljp.github.io/
+
+
 ### 序言
 这篇文章主要记录在学习《Android开发艺术探索》第11章的读书笔记，以备日后查用,码字不易转载请注明出处：http://www.jianshu.com/p/64db22fa9bc4
 

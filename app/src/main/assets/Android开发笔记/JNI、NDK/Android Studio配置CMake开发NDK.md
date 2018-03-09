@@ -1,6 +1,28 @@
- [1.eclipse中的Jni开发流程（一）](http://blog.csdn.net/wo_ha/article/details/53687903)
- [2.eclipse中的Jni开发流程（二）](http://blog.csdn.net/wo_ha/article/details/53715936)
-  [3.Android Studio配置CMake开发NDK](http://blog.csdn.net/wo_ha/article/details/78131635)
+---
+title: Android Studio配置CMake开发NDK
+layout: post
+date: 2018-09-29 10:40:58
+comments: true
+categories:
+  - Android
+  - NDK、JNI
+tags: [AndroidStudio配置，CMake，NDK，JNI]
+keywords: AndroidStudio配置，CMake，NDK，JNI
+description:
+---
+
+>我的简书：https://www.jianshu.com/u/c91e642c4d90
+我的CSDN：http://blog.csdn.net/wo_ha
+我的GitHub：https://github.com/chuanqiLjp
+我的个人博客：https://chuanqiljp.github.io/
+
+# 版权声明：商业转载请联系我获得授权，非商业转载请在醒目位置注明出处。
+
+
+
+[1.eclipse中的Jni开发流程（一）](http://blog.csdn.net/wo_ha/article/details/53687903)
+[2.eclipse中的Jni开发流程（二）](http://blog.csdn.net/wo_ha/article/details/53715936)
+[3.Android Studio配置CMake开发NDK](http://blog.csdn.net/wo_ha/article/details/78131635)
 # 1.在SDK Tools中勾选安装CMake、LLDB、NDK
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4143664-e9531961f5c65186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

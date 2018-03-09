@@ -1,19 +1,22 @@
 ---
 title:
 layout: post
-date: 2018-03-02 14:32:58
+date: 2018-02-08 16:13:58
 comments: true
 categories:
   - Android
 tags: []
 keywords:
-description: ...
+description: 
 ---
 
 >我的简书：https://www.jianshu.com/u/c91e642c4d90
 我的CSDN：http://blog.csdn.net/wo_ha
 我的GitHub：https://github.com/chuanqiLjp
 我的个人博客：https://chuanqiljp.github.io/
+
+# 版权声明：商业转载请联系我获得授权，非商业转载请在醒目位置注明出处。
+
 
 # 更多参考的表格模板
 |   更多的参考 |

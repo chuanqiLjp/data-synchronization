@@ -1,10 +1,29 @@
+---
+title: Android 自定义字体，更换系统默认显示的字体使用自定义字体
+layout: post
+date: 2018-01-29 10:26:58
+comments: true
+categories:
+  - Android
+  - Android字体
+tags: [Android 自定义字体,自定义系统字体]
+keywords: Android 自定义字体,自定义系统字体
+description:
+---
+
+>我的简书：https://www.jianshu.com/u/c91e642c4d90
+我的CSDN：http://blog.csdn.net/wo_ha
+我的GitHub：https://github.com/chuanqiLjp
+我的个人博客：https://chuanqiljp.github.io/
+
+# 版权声明：转载需要在醒目注明出处
+
+
 ### 序言：
 
 可以免费下载字体的网站：[字体下载大宝库](http://font.knowsky.com/)；[找字网](http://www.zhaozi.cn/)
 还有一个字体编辑软件：[FontCreator9.0绿色汉化特别版](http://www.zhaozi.cn/html/prog/47.html)
 可以自定义字体的第三方库：[Calligraphy](https://github.com/chrisjenx/Calligraphy)
-
-### 版权声明：本文可被转载，但需要在醒目位置注明原文出处：https://www.jianshu.com/p/282716d73c6a
 
 
 

@@ -1,3 +1,25 @@
+---
+title: POI读取Excel表格和导出Excel文件
+layout: post
+date: 2018-01-25 14:31:58
+comments: true
+categories:
+  - Android
+  - 文档操作
+  - Excel
+tags: [读取Excel表格,导出Excel文件]
+keywords: 读取Excel表格,导出Excel文件
+description:
+---
+
+>我的简书：https://www.jianshu.com/u/c91e642c4d90
+我的CSDN：http://blog.csdn.net/wo_ha
+我的GitHub：https://github.com/chuanqiLjp
+我的个人博客：https://chuanqiljp.github.io/
+
+# 版权声明：转载需要在醒目注明出处
+
+
 ###序言：
 - 这两天在弄一个股票数据分析，而Choice中导出的数据是Excel的表格，数据多达上百个，如果要手动的去操作的话，操作量非常大，所以就想着怎么用代码去实现，主要需求是：读取100多个相同格式的excel文件然后进行合并。翻译下就是Excel文件的读写。因此本篇就讲Excel读取和Excel的导出，一些常见的格式设置，增加单元格的边框，设置单元格的字体等，都是非常简单的使用，更详细的请参阅[官方文档](http://poi.apache.org/spreadsheet/quick-guide.html#NewWorkbook)
 # 1、下载需要的Jar包，[点击立即下载](http://download.csdn.net/download/wo_ha/10222029)
