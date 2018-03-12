@@ -53,14 +53,6 @@ description:
 * ![image.png](http://upload-images.jianshu.io/upload_images/4143664-b29ff9ade660d146.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-# 关于我的及版权声明
->我的简书：https://www.jianshu.com/u/c91e642c4d90
-我的CSDN：http://blog.csdn.net/wo_ha
-我的GitHub：https://github.com/chuanqiLjp
-我的个人博客：https://chuanqiljp.github.io/
-转载请注明出处：http://blog.csdn.net/wo_ha/article/details/79433110
-版权声明：
-
 
 
 
