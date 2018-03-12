@@ -17,6 +17,8 @@ description: 布局优化,绘制优化,内存泄露优化,ListView优化,Bitmap�
 我的GitHub：https://github.com/chuanqiLjp
 我的个人博客：https://chuanqiljp.github.io/
 
+## 版权声明：商业转载请联系我获得授权，非商业转载请在醒目位置注明出处。
+
 ## 1、布局优化
 1. 使用Lint（AS -> Analyze -> Inspect code） — 查看你的view 层级哪些地方可以优化；
 2. 删除布局中无用的控件和层级；
