@@ -48,8 +48,11 @@ description: 布局优化,绘制优化,内存泄露优化,ListView优化,Bitmap�
 2. 缓存item条目的引用，减少findViewbyId—>ViewHolder
 3. 数据的 分页/分批 加载：对大量的数据进行分页展示，对不同的滚动状态进行分别处理，在快速滑动状态不加载数据
 4. 图片的缓存，需要解决图片错位问题—>推荐使用成熟框架Glide或Picasso
-5. 根据列表的滑动状态来控制任务的执行频率
+5. 根据列表的滑动状态来控制任务的执行频率（在快速滑动时不要加载图片）
 6. 可以开启硬件加速使ListView更加流畅（android:hardwareAccelerated="true"）
+7. 将ListView的scrollingCache和animateCache这两个属性设置为false（默认是true）;
+8. 避免GC（可以从LOGCAT查看有无GC的LOG）；
+9. 尽可能减少List Item的Layout层次（如可以使用RelativeLayout替换LinearLayout，或使用自定的View代替组合嵌套使用的Layout）；
 
 ## 5、Bitmap优化
 1. 避免Bitmap的浪费，临时bitmap的主动回收Bitmap，bitmap.recycle();bitmap=null;
