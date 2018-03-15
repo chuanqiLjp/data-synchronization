@@ -363,6 +363,169 @@ Context的实例是什么时候创建的？一个应用里面会有几个Context
 链接：https://www.jianshu.com/p/024f46834485
 
 
+<h2 id="在项目中使用AsyncTask会有什么问题吗">
+在项目中使用AsyncTask会有什么问题吗
+</h2>
+
+[返回目录](#目录)
+
+1. 提供了onCancelled()方法，在主线程中执行，当异步任务被取消时，onCancelled()方法会被调用，这个时候onPostExecute方法不会被调用；
+2. AsyncTask的类必须在主线程中加载，即第一次访问AsyncTask必须发生在主线程中，但这个过程在Android4.1及以上版本系统自动完成；
+3. AsyncTask的对象必须在主线程中创建；
+4. execute方法必须在UI线程中调用；
+5. 不能在程序中直接调用onPreExecute()、onPostExecute()、doInBackground和onProgressUpdate方法；
+6. 一个AsyncTask对象只能执行一次，即只能调用一次execute方法；
+7. AsyncTask采用一个线程来串行的执行任务，但可以通过AsyncTask的executeOnExecutor(Executor exec,Params... params)方法来并行的执行任务；
+
+线程池可以同时执行多少个TASK？
+
+你在项目中，会用什么方案来替换AsyncTask呢？
+
+
+链接：https://www.jianshu.com/p/c925b3ea1444
+
+
+<h2 id="修改SharedPreferences后两种提交方式有什么区别？">
+修改SharedPreferences后两种提交方式有什么区别？
+</h2>
+
+[返回目录](#目录)
+
+1. commit这种方式很常用，在比较早的SDK版本中就有了，这种提交修改的方式是同步的，会阻塞调用它的线程，并且这个方法会返回boolean值告知保存是否成功（如果不成功，可以做一些补救措施）。
+2. 而apply是异步的提交方式，目前Android Studio也会提示大家使用这种方式。
+3. SharedPreferences还提供一个监听接口可以监听SharedPreferences的键值变化，需要监控键值变化的可以用registerOnSharedPreferenceChangeListener添加监听器。
+4. Sharedpreferences：系统对它的读写有一定的缓存策略，即在内存中会有一份Sharedpreferences文件的缓存，因此多进程模式下系统对它的读写就不可靠；不建议在多进程中使用（可考虑ContentProvider），开源的替代方案[tray](https://github.com/grandcentrix/tray)
+
+
+链接：https://www.jianshu.com/p/4dd53e1be5ba
+
+
+
+<h2 id="有使用过ContentProvider码？能说说Android为什么要设计ContentProvider这个组件吗？">
+有使用过ContentProvider码？能说说Android为什么要设计ContentProvider这个组件吗？
+</h2>
+
+[返回目录](#目录)
+
+> ContentProvider应用程序间非常通用的共享数据的一种方式，也是Android官方推荐的方式。Android中许多系统应用都使用该方式实现数据共享，比如通讯录、短信等。但我遇到很多做Android开发的人都不怎么使用它，觉得直接读取数据库会更简单方便。
+
+>android:exported属性非常重要。这个属性用于指示该服务是否能够被其他应用程序组件调用或跟它交互。如果设置为true，则能够被调用或交互，否则不能。设置为false时，只有同一个应用程序的组件或带有相同用户ID的应用程序才能启动或绑定该服务。
+
+其设计用意在于：
+1. 封装。对数据进行封装，提供统一的接口，使用者完全不必关心这些数据是在DB，XML、Preferences或者网络请求来的。当项目需求要改变数据来源时，使用我们的地方完全不需要修改。
+2. 提供一种跨进程数据共享的方式
+3. ContentResolver接口的notifyChange函数来通知那些注册了监控特定URI的ContentObserver对象，使得它们可以相应地执行一些处理。ContentObserver可以通过registerContentObserver进行注册。
+
+每个ContentProvider的操作是在哪个线程中运行的呢（其实我们关心的是UI线程和工作线程）？比如我们在UI线程调用getContentResolver().query查询数据，而当数据量很大时（或者需要进行较长时间的计算）会不会阻塞UI线程呢？
+1. ContentProvider和调用者在同一个进程，则ContentProvider的方法（query/insert/update/delete等）和调用者是处在同一线程中的；
+2. ContentProvider和调用者在不同的进程，则ContentProvider的方法会运行在它自身所在进程的一个Binder线程中。
+3. 以上两种方式在ContentProvider的方法没有执行完成前都会阻塞调用者，因此会阻塞UI线程
+
+[Android系统匿名共享内存Ashmem（Anonymous Shared Memory）简要介绍和学习计划](http://blog.csdn.net/luoshengyang/article/details/6651971)
+
+链接：https://www.jianshu.com/p/380231307070
+
+
+<h2 id="如何处理线程同步的问题？">
+如何处理线程同步的问题？
+</h2>
+
+[返回目录](#目录)
+
+Object的wait和notify/notifyAll如何实现线程同步？
+> 在Object.java中，定义了wait(), notify()和notifyAll()等接口。wait()的作用是让当前线程进入等待状态，同时，wait()也会让当前线程释放它所持有的锁。而notify()和notifyAll()的作用，则是唤醒当前对象上的等待线程；notify()是唤醒单个线程，而notifyAll()是唤醒所有的线程。
+
+wait和yield（或sleep）的区别？
+> wait()是让线程由“运行状态”进入到“等待(阻塞)状态”，而yield()是让线程由“运行状态”进入到“就绪状态”，从而让其它具有相同优先级的等待线程获取执行权；但是，并不能保证在当前线程调用yield()之后，其它具有相同优先级的线程就一定能获得执行权。
+
+> wait()是会线程释放它所持有对象的同步锁，而yield()方法不会释放锁。
+
+
+链接：https://www.jianshu.com/p/fd70d652f9e3
+
+
+<h2 id="如何准备自我介绍">
+如何准备自我介绍
+</h2>
+
+[返回目录](#目录)
+
+1. 将自我介绍控制在200-500字。
+> 主要概括一下自己的供职过的公司和参加过的项目经历；如果刚毕业的，可以简单介绍一下自己的专业和兴趣，或之前的实践项目经历。可以找同学或者朋友、同事听听，注意他们的反馈。对于项目经历，可以找一些不懂这个项目的人，尝试给他们用简单的一句话说明白。并且自我介绍也不能一成不变，对不同的公司和职位，要有不同的侧重点。好比我招Android应用开发，肯定希望面试者多讲讲自己在Android开发方面的经验和看法。
+
+2. 不要主动介绍自己不好的地方。
+> 就算你很谦虚，也没有必要逢人就说自己的缺点在哪里。任何时候，你都应该表现自己积极主动的一面，你应该做一个传播正能量的人，为什么？因为大多数人都喜欢和正能量的人在一起。遇到太多，所以我更相信概率（很多人都无法胜任）。因为很多人都是“用一个经验工作了很多年”，并不是真有多年工作经验。一个有多年工作经验的人，他有能力让自己在面试时就能达到新平台的开发要求，如果现在不能，那么以后能的可能性并不大。这从一个方面说明了他的理解和学习能力，以及自身的执行力。这三者兼具又有多年工作经验的人，他只需要很短的时间就可以达到一般项目中对Android开发的要求。如果短时间（2到6个月）无法达到，给他一两年，他仍然达不到。
+
+3. 诚实的对待自己。
+> 不行的地方就是不行，把自己的预期降低，用几年的时光努力换取一个满意真实地自我介绍。你可能会损失眼前的工作，也可能只能拿到更低的工资。不要觉得几年是很长的时间，这几年的努力对你的长远来说意义非凡。做到这一点，你会更容易明白什么更值钱。
+
+> 总结下来就是，你需要用简洁的语言概括出你工作和项目经历，并侧重于突出和此次面试相关的经历，并且在平时要培训自己成为一个正面、积极的人。
+
+链接：https://www.jianshu.com/p/3ca780defc93
+
+
+<h2 id="如何对SQLite数据库中进行大量的数据插入？">
+如何对SQLite数据库中进行大量的数据插入？
+</h2>
+
+[返回目录](#目录)
+
+插入的优化可以通过“SQLiteStatement+事务”的方式显著提高效率。
+```
+直接使用SQL语句进行插入
+直接使用SQL语句插入，添加事务
+使用ContentValues方式，添加事务
+使用SQLiteStatement方式，添加事务
+```
+
+> 查询方面的优化一般可以通过建立索引。建立索引会对插入和更新的操作性能产生影响，使用索引需要考虑实际情况进行利弊权衡，对于查询操作量级较大，业务对要求查询要求较高的，还是推荐使用索引。所以这会有一个取舍问题，看你的项目是查询频繁还是插入和修改频繁。当然还有一些小的优化细节，如果面试官问到也可以说几点（如limit）。
+
+>SQLite的同步锁精确到数据库级，粒度比较大，不像别的数据库有表锁，行锁。同一个时间只允许一个连接进行写入操作。
+
+**我们如果开一个工作线程去操作SQLite数据库，如批量地插入可能需要30秒钟，而这个时间UI线程也要从数据库读取一下数据展示给用户，那么这个时候UI线程能读取到这个数据库吗？**
+> 关于楼主那个一边插入一边读取显示那个问题，我有如下解决方法，望楼主评价一下如何： 首先先根据项目需求，看这个一边读取的数据量有多少，可以采用预插入一个小数量级的数据，然后再读出来（假设数据获取和UI显示在两个不同的进程），满足UI需求，然后后续再用户无法感知的情况下，再完成后续的大量数据插入。这相当于lazy吧，因为移动端的确资源有限，动不动就想并发不太实际，楼主觉得呢？
+
+链接：https://www.jianshu.com/p/2398aad3bd61
+
+
+
+<h2 id="Activity的启动模式（launchMode）有哪些，有什么区别？">
+Activity的启动模式（launchMode）有哪些，有什么区别？
+</h2>
+
+[返回目录](#目录)
+
+> Launcher这个应用的Home界面（一般是指Launcher.java）用的是哪种模试。我自信的回答用singleInstance，要不是面试官早有准备，估计他都要被我的自信弄得要开始怀疑人生。我的相法很简单，认为它全局只有一个实例而且应该只有一个实例，用singleInstance最好。当我回来查询Launcher的源代码时发现使用的是SingleTask模式。
+
+很多人在使用startActivityForResult启动一个Activity时，会发现还没有开始界面跳转本身的onActivityResult马上就被执行了，这是为什么呢？
+> 左边第1列代表MainActivity的启动模式，第一行代表SecondActivity（即要startActivityForResult启动的Activity）的启动模式，打叉代表在这种组合下 onActivityResult 会被马上调用，好在幸运的是，Android在5.0及以后的版本修改了这个限制。也就是说上面x的地方全部变成了√，那么在Android 5.0后，还会有这个问题吗？还是会的。如在Intent中设置了FLAG_ACTIVITY_NEW_TASK（intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);）再startActivityForResult，即使是标准的启动模式仍然会有这个问题。
+
+|onActivityResult立即被调用的组合|stand|singleTop| singleTask | singleInstance|
+|----|:------:|:----:|:----:|:----:|
+|stand|√|√|x| x|
+|singleTop|√|√| x|x|
+|singleTask|√|√| x |x|
+|singleInstance|x|x|x|x|
+
+链接：https://www.jianshu.com/p/cb5c4e5598ed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 链接：
