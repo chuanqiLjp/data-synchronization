@@ -549,23 +549,69 @@ UI设计师对照参考图
 
 链接：https://www.jianshu.com/p/46ce37b8553c
 
+<h2 id="有没有遇到OOM的问题？如何优化图片占用的内存空间？">
+有没有遇到OOM的问题？如何优化图片占用的内存空间？
+</h2>
+
+[返回目录](#目录)
+
+1. 3.0版本的还增加了一个inBitmap属性（BitmapFactory.Options.inBitmap）。如果设置了这个属性则会重用这个Bitmap的内存从而提升性能。但是这个重用是有条件的，在Android4.4之前只能重用相同大小的Bitmap，Android4.4+则只要比重用Bitmap小即可
+2. 使用采样率（inSampleSize），如果最终要压缩图片，如显示缩列图，我们并不需要加载完整的图片数据，只需要按一定的比例加载即可；使用Matrix变形等，比如使用Matrix进行放大，虽然图像大了，但并没有占用更多的内存。
+3. 如果图片很大，比如他们的占用内存算下来就直接OOM了，那么我们肯定不能直接加载它。解决主法还是有很多的，系统也给我们提供了一个类BitmapRegionDecoder，可以用来分块加载图片
+
+链接：https://www.jianshu.com/p/3c597baa39e5
 
 
+<h2 id="Android中Java和JavaScript如何交互？">
+Android中Java和JavaScript如何交互？
+</h2>
+
+[返回目录](#目录)
+
+> JavaScript 是一种脚本语言，个人认为他比Java更面像对象，它没有编译、链接等操作，在运行时才动态的进行词法、语法分析，生成抽象语法树和字节码，然后由解释器负责执行或者使用 JIT 将字节码转化为机器码再执行。整个流程由 JavaScript 引擎负责完成，在Android手机上，这个JavaScript 引擎就是WebView的实现内核，在Android 4.4版本中，原本基于Android WebKit的WebView实现被换成基于Chromium的WebView实现。
+
+1、Java调用WebView加载的网页上的JavaScript
+
+```
+webView.loadUrl(“javascript:methodName(parameterValues)”)//无法接受返回值
+
+Android 4.4之后WebView增加了evaluateJavascript接口可以供我们通过ValueCallback这个回调处理返回值。
+webView.evaluateJavascript("getString()", new ValueCallback<String>() {//必须在UI线程（主线程）调用
+  @Override
+  public void onReceiveValue(String value) {//接受到的返回值
+      Log.i(LOGTAG, "onReceiveValue value=" + value);
+  }});
+
+```
+2、JavaScript调用本地的Java对像方法
+```
+WebView.getSettings().setJavaScriptEnabled(true);
+WebView.addJavascriptInterface(new JsClient(), "JsClientTest");
+    public class JsClient {
+        public JsClient() {
+        }
+
+        @JavascriptInterface
+        public void submit(String str) {
+            Toast.makeText(HtmlActivity.this, str, Toast.LENGTH_SHORT).show();
+            presenter.submit(str);
+        }
+    }
+    //JS的调用
+    JsClientTest.submit(jsonStr);//传值
+```
+
+React Native
+> React Native的目的是构建真正native的应用。而不是构建在Webview里运行的混合模式的应用，开发完全由JavaScript和React来完成。简单说它的原理就是，开发用JavaScript开发Web的方式进行开发，最终在移动端会使用一个JavascriptCore解释器引擎来解析JS相关文件成相应的原生控件再进行渲染，性能上得到了很大的提升,FaceBook开发React的思维是：Learn once，Write anywhere!
+
+链接：https://www.jianshu.com/p/4bb5672ff88d
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+针对没有工作（或者项目）经验的毕业生来说，比较看重如下几点
+1. 沟通和语言表达能力:如果面试官是正常的（不难沟通），那对方能和面试官进行良好不冷场的对话，那么沟通能力就是有保证的,语言的表达能力很重要，它代表你的思维方式和抽象概括的能力。理查德D. 费曼关于知识管理有一个“费曼技巧”：通过向别人清楚地解说一件事，来确认自己真的弄懂了这件事。其实通俗点说，就是你能用自己的话说出来了才说明你会了。而要用自己的话说出来，你的抽象概括就显得尤为重要。
+2. 理解和学习能力；
+3. 是否极积乐观：极积和乐观的人对工作是很有帮助的，至少和他们在一起工作也会觉得很开心。工作肯定会有压力，乐观的人总是比较容易化解这些压力，不至于压力一来就在烦躁的骂天骂地骂人
+4. 对未来的规划：这点应该是很多人的弊端，正如那句话“我们都没有去看过世界，哪来的世界观”。我们总想着，未来我们成为软件行业的高手、大神，追随者无数，人见人爱。但是却忘了，做一个规划。每天都能过且过的上班，然后一直抱怨是公司或者社会没有给自己机会成为大神，所以我认为有一个对自己未来（三到五年）的规划是很重要的，特别是对应届毕业生，你没有过往的经验，那就只能来说说你是如何憧憬未来，最重要的还是要看到你打算如何实现它的方案。这一点还涉及到眼界方面的问题，也许我们现在定的未来很可笑和幼稚，但有规划总比漫无目的的好吧。
 
 
 
