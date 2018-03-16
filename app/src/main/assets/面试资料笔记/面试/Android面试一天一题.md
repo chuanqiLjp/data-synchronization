@@ -507,7 +507,51 @@ Activity的启动模式（launchMode）有哪些，有什么区别？
 |singleTask|√|√| x |x|
 |singleInstance|x|x|x|x|
 
+> 在项目中常遇到一个需求就是在通知栏中使用PendingIntent跳转到相关的Activity。但这个Activity往往是根据通知的内容的具体的Activity，通知来的时候有可能应用已经被KILL掉了，这时跳转这个具体内容的DetailActivity后，我们希望按Back键能回退到应用的主界面（MailActivity），你会怎么做呢？在DetailActivity中onBackPressed做判断？如果没有很好的解决方案的话，大家可以看看：TaskStackBuilder。
+
+> 关于程序员的“35岁坎”（业界就是这样流传的），我们都需要各自好好思考一下。如果一样东西我们学过、使用过，但当我们不在这个行业时，这个当年费尽辛苦学来的东西还能记住什么呢？会不会也只是很少的一部份，只是当年让我们为难的痛点呢？当有一天Android被淘汰了，或者自己转行了，那么从Android这个平台上我们学习到了什么呢？什么是会变的，什么又是不变的呢？我想不变的东西，才是值得我们仔细思考的
+
+链接：https://www.jianshu.com/p/e466b6390a7c
 链接：https://www.jianshu.com/p/cb5c4e5598ed
+
+
+
+<h2 id="Android资源目录的读取顺序？">
+Android资源目录的读取顺序？
+</h2>
+
+[返回目录](#目录)
+
+![image.png](https://upload-images.jianshu.io/upload_images/4143664-37b06a06b0625135.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+> 在查找时会先去掉有冲突的资源目录（上图第1步），然后再按MCC、MNC、语言等指定的优先级进行查找，直到确认一个匹配资源。根据屏幕尺寸限定符选择资源时，如果没有更好的匹配资源，则系统将使用专为小于当前屏幕的屏幕而设计的资源。
+
+图片放错目录会产生的问题吗？
+把同一个图片资源放在不同的dpi目录，会发现它们使用的内存是不一样的。简单说就是高密度（density）的系统去使用低密度目录下的图片资源时，会将图片长宽自动放大以去适应高密度的精度，当然图片占用的内存会更大。所以如果能提各种dpi的对应资源那是最好，可以达到较好内存使用效果。如果提供的图片资源有限，那么图片资源应该尽量放在高密度文件夹下，这样可以节省图片的内存开支。
+
+drawable文件夹是存放一些xml(如selector)和图片，Android会根据设备的屏幕密度(density)自动去对应的drawable文件夹匹配资源文件。Android对放在mipmap目录的图标会忽略屏幕密度，会去尽量匹配大一点的，然后系统自动对图片进行缩放，从而优化显示和节省资源（使用上面说的mipmap技术）。就目前的版本来说，mipmap也没有完全取代drawable的意思，为了更好的显示效果，官方建议如下类型的图片资源可以放到mipmap目录(Launcher icons、Action bar and tab icons、Notification icons)。
+
+**drawable-nodpi文件夹** 这个文件夹是一个密度无关的文件夹，放在这里的图片系统就不会对它进行自动缩放，原图片是多大就会实际展示多大。但是要注意一个加载的顺序，drawable-nodpi文件夹是在匹配密度文件夹和更高密度文件夹都找不到的情况下才会去这里查找图片的，因此放在drawable-nodpi文件夹里的图片通常情况下不建议再放到别的文件夹里面。
+
+**res/raw和assets的区别**  这两个目录下的文件都会被打包进APK，并且不经过任何的压缩处理。assets与res/raw不同点在于，assets支持任意深度的子目录，这些文件不会生成任何资源ID，只能使用AssetManager按相对的路径读取文件。如需访问原始文件名和文件层次结构，则可以考虑将某些资源保存在assets目录下。
+
+UI设计师对照参考图
+
+|密度|	建议尺寸|
+|:----|:----|
+| mipmap-mdpi  |	48 * 48|
+|  mipmap-hdpi  |	72 * 72  |
+|  mipmap-xhdpi  |	96 * 96  |
+|  mipmap-xxhdpi  |	144 * 144  |
+|  mipmap-xxxhdpi  |	192 * 192  |
+
+面试者分做两类。一类是打下手的开发，做一些功能或业务模块实现，修修BUG保证应用正常运行；另一类是主创型开发，也可以叫主力开发，他们对应用开发的各个模块都有了解，可以熟练地从零开始搭建出整个项目框架，主力选手除了经验的积累外更重要的是思维方式的改变，注重接口的设计胜过功能代码的实现
+
+链接：https://www.jianshu.com/p/46ce37b8553c
+
+
+
+
 
 
 
