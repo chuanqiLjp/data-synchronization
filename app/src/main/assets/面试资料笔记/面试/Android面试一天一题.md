@@ -615,6 +615,27 @@ React Native
 
 
 
+<h2 id="两个Fragment之间如何进行通信？">
+两个Fragment之间如何进行通信？
+</h2>
+
+[返回目录](#目录)
+
+> 尽管Fragment是作为独立于Activity的对象实现，并且可在多个Activity内使用，但片段的给定实例会直接绑定到包含它的 Activity。具体地说，片段可以通过getActivity()访问Activity实例。同样地，Activity也可以使用findFragmentById()或findFragmentByTag()，通过从FragmentManager获取对Fragment的引用来调用片段中的方法。知道这些基础，你应该很清楚怎么进行通信了。不过我们建议的方式是面向接口编程，在Fragment中getActivity获取到的Activity实例应该是实现了我们某个接口的实例，即在Fragment的代码中不应该出现某个具体的Activity类
+
+如何管理Fragment回退栈?
+
+FragmentTransaction中remove和detach的区别 ?
+
+
+<h2 id="如何理解Android应用的进程？">
+如何理解Android应用的进程？
+</h2>
+
+[返回目录](#目录)
+
+
+
 
 
 
