@@ -634,6 +634,39 @@ FragmentTransaction中remove和detach的区别 ?
 
 [返回目录](#目录)
 
+> 当系统内存不足时，Android系统会选择终止掉一部份进程，回收其所占用的内存空间。 为了确定保留或终止哪些进程，系统会根据进程中正在运行的组件以及这些组件的状态，将每个进程放入“重要性层次结构”中。 必要时，系统会首先消除重要性最低的进程，然后是重要性略逊的进程，依此类推，以回收系统资源。重要性从高到低:前台进程->可见进程->服务进程->后台进程->空进程；
+
+对于一般提高进程优先级的方法
+1. 进程要运行一些组件，不要成为空进程。
+2. 远行一个Service，并设置为前台运行方式（startForeground）。
+```
+private void keepAlive() {
+        try {
+            Notification notification = new Notification();
+            notification.flags |= Notification.FLAG_NO_CLEAR;
+            notification.flags |= Notification.FLAG_ONGOING_EVENT;
+            startForeground(0, notification); // 设置为前台服务避免kill，Android4.3及以上需要设置id为0时通知栏才不显示该通知；
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+```
+3. AndroidManifest.xml中配置persistent属性（persistent的App会被优先照顾，进程优先级设置为PERSISTENT_PROC_ADJ=-12）
+
+> 线程是CPU调度的基本单元，一个应用都有一个主线程负责处理消息。一个应用启动后，至少会有3个线程，一个主线程（UI线程）和2个Binder线程。Zygote进程（APK所在的进程也是由Zygote进程Fork出来的）还会产生有一些Daemon线程如：ReferenceQueueDaemon、FinalizerDaemon、FinalizerWatchdogDaemon、HeapTaskDaemon
+
+![image.png](https://upload-images.jianshu.io/upload_images/4143664-85960f850b74268e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+**线程安全** 就是多线程访问时，采用了加锁机制，当一个线程访问该类的某个数据时，进行保护，其他线程不能进行访问直到该线程读取完，其他线程才可使用。不会出现数据不一致或者数据污染。(Vector,HashTab;le)
+**线程不安全** 就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是脏数据。（ArrayList，LinkedList，HashMap等）
+
+
+
+
+
+
+链接：https://www.jianshu.com/p/999650fda571
+
 
 
 
