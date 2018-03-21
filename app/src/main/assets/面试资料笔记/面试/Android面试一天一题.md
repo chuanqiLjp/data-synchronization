@@ -660,12 +660,64 @@ private void keepAlive() {
 **线程安全** 就是多线程访问时，采用了加锁机制，当一个线程访问该类的某个数据时，进行保护，其他线程不能进行访问直到该线程读取完，其他线程才可使用。不会出现数据不一致或者数据污染。(Vector,HashTab;le)
 **线程不安全** 就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是脏数据。（ArrayList，LinkedList，HashMap等）
 
-
-
-
-
-
 链接：https://www.jianshu.com/p/999650fda571
+
+<h2 id="如何解决ScrollView嵌套中一个ListView的滑动冲突？">
+如何解决ScrollView嵌套中一个ListView的滑动冲突？
+</h2>
+
+[返回目录](#目录)
+
+解决ListView只显示一个Item和解决ListView与ScrollView的滑动冲突问题的代码？
+```
+    /**
+     * 重写ListView的onMeasure方法，达到使ListView适应ScrollView的效果，解决ListView只显示一个Item
+     */
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
+        MeasureSpec.AT_MOST);
+        super.onMeasure(widthMeasureSpec, expandSpec);
+    }
+    @Override//重写ListView的onInterceptTouchEvent方法，解决ListView与ScrollView的滑动冲突问题
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                getParent().requestDisallowInterceptTouchEvent(true);
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                getParent().requestDisallowInterceptTouchEvent(false);
+                break;
+        }
+        return super.onInterceptTouchEvent(ev);
+    }
+
+```
+ScrollView和ListView都是上下滑动的，嵌套在一起后ScrollView中的ListView就没法上下滑动了，事件被ScrollView响应了。
+
+
+事件的分发中我们较关注的三个方法：
+**分发事件：dispatchTouchEvent**
+在这里进行事件的分发，onInterceptTouchEvent和onTouchEvent都是由dispatchTouchEvent负责调度的。
+
+**拦截事件：onInterceptTouchEvent**
+只有ViewGroup才有这个方法。拦截了的话，ViewGroup就不会把事件继续分发给子View了，即子View的dispatchTouchEvent和onTouchEvent这两个方法都不会被调用。返回true时，表示ViewGroup会拦截事件。
+
+**消费事件：onTouchEvent**
+onTouchEvent 返回true时，表示事件被消费掉了。一旦事件被消费掉了，其他父元素的onTouchEvent方法都不会被调用。
+
+![image.png](https://upload-images.jianshu.io/upload_images/4143664-501daf8083e483a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+链接：https://www.jianshu.com/p/9abf6a874feb
+
+
+<h2 id="知道什么是ART吗？它和Dalvik有什么区别？">
+知道什么是ART吗？它和Dalvik有什么区别？
+</h2>
+
+[返回目录](#目录)
+
 
 
 
