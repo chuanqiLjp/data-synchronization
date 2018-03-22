@@ -870,15 +870,7 @@ Presenter：作为View与Model交互的中间纽带，处理与用户交互的�
 9. [大牛的网站Jakewharton](http://jakewharton.com/):Github：https://github.com/JakeWharton,所在公司：Square Open Source  网址：http://square.github.io/
 10. [Realm官网](https://realm.io/):Realm开源库的官网也很不错，经常在它的news版块能看到一些高质量的文章或者视频演讲
 
-
-
-
-
-
-
-
-
-
+链接：https://www.jianshu.com/p/bcfb00d7f491
 
 
 
