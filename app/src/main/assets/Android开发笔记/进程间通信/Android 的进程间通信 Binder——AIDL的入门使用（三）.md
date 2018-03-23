@@ -264,4 +264,12 @@ public class BinderPool {
 12-02 21:16:05.976 27386-27386/com.ljp.moreaidl_client E/moreAidl: StringComput: comput=bcdefgh
 12-02 21:16:07.536 27386-27386/com.ljp.moreaidl_client E/moreAidl: StringComput: addComput=30
 ```
- 我的CSDN博客地址：http://blog.csdn.net/wo_ha/article/details/78698458
+
+
+**更多参考：**
+- [Android中的Service：默默的奉献者 (1)](http://blog.csdn.net/luoyanglizi/article/details/51586437)
+- [Android中的Service：Binder，Messenger，AIDL（2）](http://blog.csdn.net/luoyanglizi/article/details/51594016)
+- [Android：学习AIDL，这一篇文章就够了(上)](http://blog.csdn.net/luoyanglizi/article/details/51980630)
+- [Android：学习AIDL，这一篇文章就够了(下)](http://blog.csdn.net/luoyanglizi/article/details/52029091)
+- [你真的理解AIDL中的in，out，inout么？](http://blog.csdn.net/luoyanglizi/article/details/51958091)
+

@@ -873,6 +873,37 @@ Presenter：作为View与Model交互的中间纽带，处理与用户交互的�
 链接：https://www.jianshu.com/p/bcfb00d7f491
 
 
+<h2 id="Binder是什么？它是如何实现跨进程通信的？">
+Binder是什么？它是如何实现跨进程通信的？
+</h2>
+
+[返回目录](#目录)
+
+Binder通信的四个角色(可以把四个角色和熟悉的互联网进行类比：Server是服务器，Client是客户终端，ServiceManager是域名服务器（DNS），驱动是路由器)：
+- Client进程：使用服务的进程。
+- Server进程：提供服务的进程。
+- ServiceManager进程：ServiceManager的作用是将字符形式的Binder名字转化成Client中对该Binder的引用，使得Client能够通过Binder名字获得对Server中Binder实体的引用。
+- Binder驱动：驱动负责进程之间Binder通信的建立，Binder在进程之间的传递，Binder引用计数管理，数据包在进程之间的传递和交互等一系列底层支持。
+
+**Binder的运行机制：** Server进程向Service Manager进程注册服务（可访问的方法接口），Client进程通过Binder驱动可以访问到Server进程提供的服务。Binder驱动管理着Binder之间的数据传递，这个数据的具体格式由Binder协议定义（可以类比为网络传输的TCP协议）。并且Binder驱动持有每个Server在内核中的Binder实体，并给Client进程提供Binder的引用。Binder跨进程传输并不是真的把一个对象传输到了另外一个进程；传输过程好像是Binder跨进程穿越的时候，它在一个进程留下了一个真身，在另外一个进程幻化出一个影子（这个影子可以很多个）；Client进程的操作其实是对于影子的操作，影子利用Binder驱动最终让真身完成操作。
+
+**Binder的线程管理** 一个进程的Binder线程数默认最大是16，超过的请求会被阻塞等待空闲的Binder线程。理解这一点的话，你做进程间通信时处理并发问题就会有一个底，比如使用ContentProvider时（又一个使用Binder机制的组件），你就很清楚它的CRUD（创建、检索、更新和删除）方法只能同时有16个线程在跑
+
+链接：https://www.jianshu.com/p/c7bcb4c96b38
+
+
+<h2 id="AIDL是什么？你有使用过它吗，它支持哪些数据类型？">
+AIDL是什么？你有使用过它吗，它支持哪些数据类型？
+</h2>
+
+[返回目录](#目录)
+
+
+
+
+
+
+
 
 
 
