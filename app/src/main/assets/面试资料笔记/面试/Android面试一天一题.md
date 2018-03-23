@@ -889,14 +889,102 @@ Binder通信的四个角色(可以把四个角色和熟悉的互联网进行类�
 
 **Binder的线程管理** 一个进程的Binder线程数默认最大是16，超过的请求会被阻塞等待空闲的Binder线程。理解这一点的话，你做进程间通信时处理并发问题就会有一个底，比如使用ContentProvider时（又一个使用Binder机制的组件），你就很清楚它的CRUD（创建、检索、更新和删除）方法只能同时有16个线程在跑
 
+**AIDL是什么？你有使用过它吗，它支持哪些数据类型？**
+> AIDL是Android Interface Definition Language的简写，即Android接口定义语言。我们知道Android系统为每一个应用开启一个独立的虚拟机，每个应用都运行在各自进程里（默认情况下），彼此之间相互独立，无法共享内存。当一个应用想要访问另一个应用的数据或调用其方法，就要用到Android系统提供的IPC机制。而AIDL就是Android实现IPC机制的方式之一。除了AIDL，Android还提供了Messenger来实现跨进程通信，不过Messenger是以单线程串行方式（消息队列）来处理来自不同客户端的访问的，并不适合多线程并发访问。当需要提供跨进程以及多线程并发服务时就需要AIDL上场了。
+
+**AIDL中的接口函数有时会使用in、out或者inout的参数修饰符，它们各表示什么意思？在什么情况下要使用呢？**
+> AIDL中的定向 tag 表示了在跨进程通信中数据的流向，其中 in 表示数据只能由客户端流向服务端， out 表示数据只能由服务端流向客户端，而 inout 则表示数据可在服务端与客户端之间双向流通。其中，数据流向是针对在客户端中的那个传入方法的对象而言的。in 为定向 tag 的话表现为服务端将会接收到一个那个对象的完整数据，但是客户端的那个对象不会因为服务端对传参的修改而发生变动；out 的话表现为服务端将会接收到那个对象的参数为空的对象，但是在服务端对接收到的空对象有任何修改之后客户端将会同步变动；inout 为定向 tag 的情况下，服务端将会接收到客户端传来对象的完整信息，并且客户端将会同步服务端对该对象的任何变动。
+
 链接：https://www.jianshu.com/p/c7bcb4c96b38
+链接：https://www.jianshu.com/p/467016b4487c
 
 
-<h2 id="AIDL是什么？你有使用过它吗，它支持哪些数据类型？">
-AIDL是什么？你有使用过它吗，它支持哪些数据类型？
+<h2 id="一套高级工程师的面试题">
+一套高级工程师的面试题
 </h2>
 
 [返回目录](#目录)
+
+**基础原理和运行机制**
+1.Handler的运行机制，线程间是如何通信的？
+参考：[Android面试一天一题（8 Day）](https://www.jianshu.com/p/108db0240a34)
+
+2.说说AsyncTask原理。
+参考：[Android面试一天一题（13 Day: AsyncTask）](https://www.jianshu.com/p/c925b3ea1444)
+
+3.说说Android事件分发机制，ViewGroup和View上的分发有什么不同？
+参考：[Android面试一天一题（Day 26：ScrollView嵌套ListView的事件冲突）](https://www.jianshu.com/p/9abf6a874feb)
+
+4.说说Activity生命周期？可能会给一些情景：如Activity A启动Activity B ，A与B各自的生命周期流程（包括A被全覆盖，和半覆盖的区别）；或者具体问Activity在屏幕旋转时的生命周期。
+参考：[Android面试一天一题（3 Day）](https://www.jianshu.com/p/ae6e1d93cc8e)
+
+5.Activity的启动模式：Activity的几种LaunchMode及使用场景。
+参考：[Android面试一天一题（Day 19：程序员何苦为难程序员（上））](https://www.jianshu.com/p/cb5c4e5598ed) 和 [Android面试一天一题（Day 20：程序员何苦为难程序员（下））](https://www.jianshu.com/p/e466b6390a7c)
+
+6.Android中跨进程通讯有几种方式？
+参考：[Android面试一天一题（Day 35：神秘的Binder机制）](https://www.jianshu.com/p/c7bcb4c96b38)
+
+**开发经验**
+
+1.两个Activity之间怎么传递数据（Serializable和Parcelable）?
+参考：[Android面试一天一题（9 Day）](https://www.jianshu.com/p/be593134eeae)
+
+2.有遇到过哪些屏幕和资源适配问题？
+参考：[Android面试一天一题（Day 21：res目录－细节处见真章）](https://www.jianshu.com/p/46ce37b8553c)
+
+3.AIDL的全称是什么？如何工作？能处理哪些类型的数据？
+参考：[Android面试一天一题（Day 36：AIDL）](https://www.jianshu.com/p/467016b4487c)
+
+4.图片的处理和优化, 图片圆角处理的方式有哪几种？
+参考：[Android面试一天一题（Day 22: 图片到底是什么）](https://www.jianshu.com/p/3c597baa39e5) 和 [Android面试一天一题（Day 30：老外的自定义View面试题）](https://www.jianshu.com/p/96b9f38319c1)
+
+5.讲讲ListView容易引起性能问题的地方，再说一下你有什么优化方案。
+
+6.内存泄露哪几种情况？如何处理？有使用过什么相关的检测工具吗？
+参考：[http://www.jianshu.com/p/26d37babcb50](https://www.jianshu.com/p/26d37babcb50) 和 [Android面试一天一题（Day 29：内存泥潭（下））](https://www.jianshu.com/p/e86c58ba9343)
+
+**框架与模式**
+
+1.常用哪些开源项目，说说最熟悉的一个？
+参考：[Android面试一天一题（Day 32：谈谈使用过的第三方开源库）](https://www.jianshu.com/p/571d9a4e51cf)
+
+2.说说MVP，MVC，MVVM架构的不同。
+参考：[Android面试一天一题（Day 33：Android开发的套路MVP & MVVM）](https://www.jianshu.com/p/b7fb7f502ea5)
+
+3.你常用的设计模式有哪些？
+
+**专业领域**
+
+1.LBS应用：使用百度或高德地图的SDK遇到过的问题（国内外限制、精确度等）？
+
+2.插件和热修复的原理：插件和热修复框架的原理，模块化开发方式，64K的方法数限问题。
+
+3.消息推送：国内各个消息推送的使用问题？如何保持Service长活？Http长链接实现等。
+
+4.视频直播。
+
+**项目经验和职业规划**
+
+1.说说你的亮点，最值得分享的。
+参考：[Android面试一天一题（吹牛题）](https://www.jianshu.com/p/a354af5cd6d1)
+
+2.项目中遇到哪些难题，最终你是如何解决的？
+参考：[Android面试一天一题（Day 31：Android技术难题解决方案）](https://www.jianshu.com/p/69d9444e2a9a)
+
+3.你对未来三到五年的职业规划。
+参考：我在简书上的[“职业生涯”](https://www.jianshu.com/nb/7675514)专题。
+
+
+链接：https://www.jianshu.com/p/1d3a2227fb72
+
+
+
+
+
+
+
+
+
 
 
 
