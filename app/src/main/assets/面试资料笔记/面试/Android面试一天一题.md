@@ -5,6 +5,7 @@
 [返回目录](#目录)
 
 
+****
 
 <h2 id="知道Service吗，它有几种启动方式？">
 知道Service吗，它有几种启动方式？
@@ -40,7 +41,7 @@ Service的onCreate回调函数可以做耗时的操作吗？
 当我们知道了Service的用途，心中有一个Service相关的概念时，针对实际的场景还是要做具体的分析再决定是否使用Service。因为Service仍然是在主线程中调用，还是要开线程才能处理长时间的工作，Service和UI的交互也让这个方式变得不那么简便。如果你只需要在当前界面去做一些耗时操作，界面退出或改变时，工作也要停止，那么这时直接使用Thread（或者AsyncTask, ThreadHandler）会更合适你。
 链接：https://www.jianshu.com/p/7a7db9f8692d
 
-
+****
 
 <h2 id="用广播来更新UI界面好吗？">
 用广播来更新UI界面好吗？
@@ -69,6 +70,7 @@ BroadcastReceiver的生命周期？
 
 链接：https://www.jianshu.com/p/df7af437e766
 
+****
 
 <h2 id="怎么理解Activity的生命周期？">
 怎么理解Activity的生命周期？
@@ -89,6 +91,7 @@ BroadcastReceiver的生命周期？
 
 链接：https://www.jianshu.com/p/ae6e1d93cc8e
 
+****
 
 <h2 id="如何判断Activity是否在运行？">
 如何判断Activity是否在运行？
@@ -104,6 +107,7 @@ activity == null || activity.isDestroyed() || activity.isFinishing()
 ```
 链接： https://www.jianshu.com/p/f8a0c43b3dfe
 
+****
 
 <h2 id="自定义View的状态是如何保存的？">
 自定义View的状态是如何保存的？
@@ -176,6 +180,7 @@ protected void onRestoreInstanceState(Parcelable state) {
 [Android 如何保存与恢复自定义View的状态？](http://blog.csdn.net/a553181867/article/details/54633151)
 链接：https://www.jianshu.com/p/1071b9c48f1e
 
+****
 
 <h2 id="通过new创建的View实例它的onSaveStateInstance会被调用吗？">
 通过new创建的View实例它的onSaveStateInstance会被调用吗？
@@ -188,6 +193,7 @@ protected void onRestoreInstanceState(Parcelable state) {
 
 链接：https://www.jianshu.com/p/4f482548de59
 
+****
 
 <h2 id="Java的值传递和引用传递问题">
 Java的值传递和引用传递问题
@@ -201,7 +207,7 @@ Java的值传递和引用传递问题
 
 链接： https://www.jianshu.com/p/c0c5e0540928
 
-
+****
 
 <h2 id="能讲讲Android的Handler机制吗？">
 能讲讲Android的Handler机制吗？
@@ -219,6 +225,7 @@ Java的值传递和引用传递问题
 
 链接：https://www.jianshu.com/p/108db0240a34
 
+****
 
 <h2 id="HandlerThread常规使用步骤">
 HandlerThread常规使用步骤
@@ -258,6 +265,7 @@ HandlerThread的特点
 ```
 链接： http://blog.csdn.net/javazejian/article/details/52426353
 
+****
 
 <h2 id="两个Activity之间如何传递参数？">
 两个Activity之间如何传递参数？
@@ -293,7 +301,7 @@ Parcelable与Serializable的性能比较
  
 链接：https://www.jianshu.com/p/be593134eeae
 
-
+****
 
 <h2 id="如何理解Android中的Context，它有什么用？">
 如何理解Android中的Context，它有什么用？
@@ -312,7 +320,7 @@ Context的实例是什么时候创建的？一个应用里面会有几个Context
 
 链接：https://www.jianshu.com/p/0754e65a5744
 
-
+****
 
 <h2 id="如何优化ListView的性能？">
 如何优化ListView的性能？
@@ -339,7 +347,7 @@ Context的实例是什么时候创建的？一个应用里面会有几个Context
 
 链接：https://www.jianshu.com/p/8fd5fa90ee6c
 
-
+****
 
 <h2 id="如何实现应用内多语言切换？">
 如何实现应用内多语言切换？
@@ -362,6 +370,7 @@ Context的实例是什么时候创建的？一个应用里面会有几个Context
 ```
 链接：https://www.jianshu.com/p/024f46834485
 
+****
 
 <h2 id="在项目中使用AsyncTask会有什么问题吗">
 在项目中使用AsyncTask会有什么问题吗
@@ -384,6 +393,7 @@ Context的实例是什么时候创建的？一个应用里面会有几个Context
 
 链接：https://www.jianshu.com/p/c925b3ea1444
 
+****
 
 <h2 id="修改SharedPreferences后两种提交方式有什么区别？">
 修改SharedPreferences后两种提交方式有什么区别？
@@ -399,7 +409,7 @@ Context的实例是什么时候创建的？一个应用里面会有几个Context
 
 链接：https://www.jianshu.com/p/4dd53e1be5ba
 
-
+****
 
 <h2 id="有使用过ContentProvider码？能说说Android为什么要设计ContentProvider这个组件吗？">
 有使用过ContentProvider码？能说说Android为什么要设计ContentProvider这个组件吗？
@@ -425,6 +435,7 @@ Context的实例是什么时候创建的？一个应用里面会有几个Context
 
 链接：https://www.jianshu.com/p/380231307070
 
+****
 
 <h2 id="如何处理线程同步的问题？">
 如何处理线程同步的问题？
@@ -443,6 +454,7 @@ wait和yield（或sleep）的区别？
 
 链接：https://www.jianshu.com/p/fd70d652f9e3
 
+****
 
 <h2 id="如何准备自我介绍">
 如何准备自我介绍
@@ -463,6 +475,7 @@ wait和yield（或sleep）的区别？
 
 链接：https://www.jianshu.com/p/3ca780defc93
 
+****
 
 <h2 id="如何对SQLite数据库中进行大量的数据插入？">
 如何对SQLite数据库中进行大量的数据插入？
@@ -487,7 +500,7 @@ wait和yield（或sleep）的区别？
 
 链接：https://www.jianshu.com/p/2398aad3bd61
 
-
+****
 
 <h2 id="Activity的启动模式（launchMode）有哪些，有什么区别？">
 Activity的启动模式（launchMode）有哪些，有什么区别？
@@ -514,7 +527,7 @@ Activity的启动模式（launchMode）有哪些，有什么区别？
 链接：https://www.jianshu.com/p/e466b6390a7c
 链接：https://www.jianshu.com/p/cb5c4e5598ed
 
-
+****
 
 <h2 id="Android资源目录的读取顺序？">
 Android资源目录的读取顺序？
@@ -549,6 +562,8 @@ UI设计师对照参考图
 
 链接：https://www.jianshu.com/p/46ce37b8553c
 
+****
+
 <h2 id="有没有遇到OOM的问题？如何优化图片占用的内存空间？">
 有没有遇到OOM的问题？如何优化图片占用的内存空间？
 </h2>
@@ -561,6 +576,7 @@ UI设计师对照参考图
 
 链接：https://www.jianshu.com/p/3c597baa39e5
 
+****
 
 <h2 id="Android中Java和JavaScript如何交互？">
 Android中Java和JavaScript如何交互？
@@ -613,7 +629,7 @@ React Native
 3. 是否极积乐观：极积和乐观的人对工作是很有帮助的，至少和他们在一起工作也会觉得很开心。工作肯定会有压力，乐观的人总是比较容易化解这些压力，不至于压力一来就在烦躁的骂天骂地骂人
 4. 对未来的规划：这点应该是很多人的弊端，正如那句话“我们都没有去看过世界，哪来的世界观”。我们总想着，未来我们成为软件行业的高手、大神，追随者无数，人见人爱。但是却忘了，做一个规划。每天都能过且过的上班，然后一直抱怨是公司或者社会没有给自己机会成为大神，所以我认为有一个对自己未来（三到五年）的规划是很重要的，特别是对应届毕业生，你没有过往的经验，那就只能来说说你是如何憧憬未来，最重要的还是要看到你打算如何实现它的方案。这一点还涉及到眼界方面的问题，也许我们现在定的未来很可笑和幼稚，但有规划总比漫无目的的好吧。
 
-
+****
 
 <h2 id="两个Fragment之间如何进行通信？">
 两个Fragment之间如何进行通信？
@@ -627,6 +643,7 @@ React Native
 
 FragmentTransaction中remove和detach的区别 ?
 
+****
 
 <h2 id="如何理解Android应用的进程？">
 如何理解Android应用的进程？
@@ -661,6 +678,8 @@ private void keepAlive() {
 **线程不安全** 就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是脏数据。（ArrayList，LinkedList，HashMap等）
 
 链接：https://www.jianshu.com/p/999650fda571
+
+****
 
 <h2 id="如何解决ScrollView嵌套中一个ListView的滑动冲突？">
 如何解决ScrollView嵌套中一个ListView的滑动冲突？
@@ -709,6 +728,7 @@ ScrollView和ListView都是上下滑动的，嵌套在一起后ScrollView中的L
 
 链接：https://www.jianshu.com/p/9abf6a874feb
 
+****
 
 <h2 id="知道什么是ART吗？它和Dalvik有什么区别？">
 知道什么是ART吗？它和Dalvik有什么区别？
@@ -732,6 +752,7 @@ ART缺点：
 
 链接：https://www.jianshu.com/p/fda3fa6ec4c4
 
+****
 
 <h2 id="如何检测内存泄露，如何进行内存优化？">
 如何检测内存泄露，如何进行内存优化？
@@ -749,6 +770,7 @@ Android系统是基于Linux的，但Android中的进程分为两种，一种是N
 链接：https://www.jianshu.com/p/26d37babcb50
 链接：https://www.jianshu.com/p/e86c58ba9343
 
+****
 
 <h2 id="如何准备和Boss（或经理）的面试">
 如何准备和Boss（或经理）的面试
@@ -785,6 +807,7 @@ Android系统是基于Linux的，但Android中的进程分为两种，一种是N
 有一个事例：一个朋友为了进一家自已向往的公司，前半年开始就到处去打听这家公司的工程师的博客和微搏，然后只要对方发搏客（技术类的）他就去进行专业的评论（不懂就先Google，返正最后的跟帖要专业），最后这几个工程师都认识他了，还返过来也看他的搏客并和他形成了良好的互动关系。结果不说你也能猜到，只要这个公司有合适他的职位，面试基本上只是走过场。
 最后还是那句话“机会都留给有准备的人”。现在开始，你至少得准备一个搏客写写文章吧！
 
+****
 
 <h2 id="你在Android开发中遇到的技术难题是什么，你是怎么解决的？">
 你在Android开发中遇到的技术难题是什么，你是怎么解决的？
@@ -797,6 +820,7 @@ Android系统是基于Linux的，但Android中的进程分为两种，一种是N
 
 链接：https://www.jianshu.com/p/69d9444e2a9a
 
+****
 
 <h2 id="谈谈你使用过的Android开源库，是否有遇到过什么问题？">
 谈谈你使用过的Android开源库，是否有遇到过什么问题？
@@ -809,6 +833,7 @@ Android系统是基于Linux的，但Android中的进程分为两种，一种是N
 
 链接：https://www.jianshu.com/p/571d9a4e51cf
 
+****
 
 <h2 id="谈谈MVP和MVVM模式，你有在自己的项目中使用过吗？">
 谈谈MVP和MVVM模式，你有在自己的项目中使用过吗？
@@ -832,6 +857,7 @@ Presenter：作为View与Model交互的中间纽带，处理与用户交互的�
 
 链接：https://www.jianshu.com/p/b7fb7f502ea5
 
+****
 
 <h2 id="如何快速突击Android面试">
 如何快速突击Android面试
@@ -850,6 +876,7 @@ Presenter：作为View与Model交互的中间纽带，处理与用户交互的�
 
 链接：https://www.jianshu.com/p/c9091b3efb1d
 
+****
 
 <h2 id="介绍一下你经常浏览的Android技术网站">
 介绍一下你经常浏览的Android技术网站
@@ -872,6 +899,7 @@ Presenter：作为View与Model交互的中间纽带，处理与用户交互的�
 
 链接：https://www.jianshu.com/p/bcfb00d7f491
 
+****
 
 <h2 id="Binder是什么？它是如何实现跨进程通信的？">
 Binder是什么？它是如何实现跨进程通信的？
@@ -898,6 +926,7 @@ Binder通信的四个角色(可以把四个角色和熟悉的互联网进行类�
 链接：https://www.jianshu.com/p/c7bcb4c96b38
 链接：https://www.jianshu.com/p/467016b4487c
 
+****
 
 <h2 id="一套高级工程师的面试题">
 一套高级工程师的面试题
@@ -977,7 +1006,7 @@ Binder通信的四个角色(可以把四个角色和熟悉的互联网进行类�
 
 链接：https://www.jianshu.com/p/1d3a2227fb72
 
-
+****
 
 <h2 id="达到如下要求的简历可以认为是好的简历。">
 达到如下要求的简历可以认为是好的简历。
@@ -999,6 +1028,8 @@ Binder通信的四个角色(可以把四个角色和熟悉的互联网进行类�
 
 链接：https://www.jianshu.com/p/e0876b27f16e
 
+****
+
 <h2 id="你有写博客或者其他的输出吗？如果有，谈谈你的经历或者看法。">
 你有写博客或者其他的输出吗？如果有，谈谈你的经历或者看法。
 </h2>
@@ -1013,6 +1044,7 @@ Binder通信的四个角色(可以把四个角色和熟悉的互联网进行类�
 
 链接：https://www.jianshu.com/p/03a088b56753
 
+****
 
 <h2 id="如何系统学习Android开发？">
 如何系统学习Android开发？
@@ -1028,6 +1060,7 @@ Binder通信的四个角色(可以把四个角色和熟悉的互联网进行类�
 
 链接：https://www.jianshu.com/p/e883a43a5360
 
+****
 
 <h2 id="你有使用过Kotlin来开发Android应用吗？说说Kotlin和Java有什么区别？">
 你有使用过Kotlin来开发Android应用吗？说说Kotlin和Java有什么区别？
@@ -1047,12 +1080,188 @@ Binder通信的四个角色(可以把四个角色和熟悉的互联网进行类�
 
 链接：https://www.jianshu.com/p/08d709165176
 
+****
 
+<h2 id="你是如何解决Android的布局嵌套问题的？">
+你是如何解决Android的布局嵌套问题的？
+</h2>
+
+[返回目录](#目录)
+
+1. **merge** :merge标签的作用是合并UI布局，使用该标签能降低UI布局的嵌套层次。merge标签可用于两种情况：
+- 布局顶结点是FrameLayout且不需要设置background或padding等属性，可以用merge代替，因为Activity内容试图的parent view就是个FrameLayout，所以可以用merge消除只剩一个。
+- 某布局作为子布局被其他布局include时，使用merge当作该布局的顶节点，这样在被引入时顶结点会自动被忽略，而将其子节点全部合并到主布局中。
+2. **ViewStub** :ViewStub标签引入的布局默认不会inflate，既不会显示也不会占用位置。 ViewStub常用来引入那些默认不会显示，只在特殊情况下显示的布局，如数据加载进度布局、出错提示布局等。
+需要在使用时手动inflate:
+```
+ViewStub stub = (ViewStub)findViewById(R.id.error_layout);
+errorView = stub.inflate();
+errorView.setVisibility(View.VISIBLE);
+```
+ViewStub在一定的程度可以起到减少嵌套层次的作用，特别是很多时候我们的程序可能不需要走到ViewStub的界面。
+3. **include** ：将可复用的组件抽取出来并通过include标签使用，但<include>标签能减少布局的层次吗？我认为不能。include主要解决的是相同布局的复用问题，它并不能减少布局的层次。
+4. **用RelativeLayout代替LinearLayout**：很多人为了减少布局层次喜欢用RelativeLayout代替LinearLayout，不过可能达到的效果并不会很明显。层次是减少了，但本身RelativeLayout就会比LinearLayout性能差一点。有一些界面，比如一个图片和一个文本的布局（ListItem常见的布局方式），可以利用TextView有drawableLeft, drawableRight等属性，完全不需要RelativeLayout或者LinearLayout布局。
+5. **ConstraintLayout** ：ConstraintLayout即约束布局，在2016年由Google I/O推出。ConstraintLayout和RelativeLayout有点类似，控件之间根据依赖关系而存在，但比RelativeLayout更加灵活。创建大型复杂的布局仍然可以使用扁平的层级(不用嵌套View Group)，说的简单些就是，再复杂的界面也可以只有2层层次。要使用ConstraintLayout需要在build.gradle中添加相关的support库，
+6. **FlexBoxLayout** ：做过前端开发（CSS方面）的同学对FlexBox一定不会陌生，最近我在做微信小程序开发时也涉及到FlexBox。FlexBox(弹性布局)是w3c在2009年提出的一种新的布局方案，解决以前那种传统css的盒模型的局限性。Google开源了FlexboxLayout布局和前端CSS FlexBox布局具有相同的功能（肯定有不一样的地方），但已经足够在Android上改进布局的构建方式。FlexBoxLayout可以理解成一种更高级的LinearLayout，不过比LinearLayout更加强大和灵活。如果我们使用LinearLayout布局的话，那么不同的分辨率，也许我们要重新调整布局，势必会需要跟多的布局文件放在不同的资源目录。而使用FlexBoxLayout来布局的话，它可以适应各种界面的改变（所以叫响应式布局）。
+
+链接：https://www.jianshu.com/p/c8d4a3d7fd26
+
+
+****
+
+<h2 id="设计模式">
+设计模式
+</h2>
+
+[返回目录](#目录)
+
+面试题: 回调函数和观察者模式的区别？
+> “标准答案”：观察者模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。观察者模式完美的将观察者和被观察的对象分离开，一个对象的状态发生变化时，所有依赖于它的对象都得到通知并自动刷新。回调函数其实也算是一种观察者模式的实现方式，回调函数实现的观察者和被观察者往往是一对一的依赖关系。所以最明显的区别是观察者模式是一种设计思路，而回调函数式一种具体的实现方式；另一明显区别是一对多还是多对多的依赖关系方面。
+
+Android的单列模式如何保证一定单列的情况？
+```
+public class Singleton{
+    private volatile static Singleton instance;
+    private Singleton() {};
+    public static Singleton getInstance() {
+        if (instance==null) {
+            synchronized(Singleton.class) {
+                if (instance==null)
+                    instance=new Singleton();
+            }
+        }
+        return instance;
+    }
+}
+```
+
+Android较常用到的设计模式？
+- 适配器模式：GridView、ListView的Adapter;
+- 建造者模式：AlertDialog.Builder;
+- 观察者模式：ListView的adapter.notifyDataSetChanged;
+- 责任链模式：View的事件分发；（当然还有很多，列出你熟悉的就好。）
+
+链接：https://www.jianshu.com/p/1986948a2ba4
+
+****
+
+<h2 id="离面试不到24小时，该准备什么？">
+离面试不到24小时，该准备什么？
+</h2>
+
+[返回目录](#目录)
+
+**必须准备的**
+- 自我介绍
+- 项目经验介绍： 你比较熟悉的项目？你在项目中遇到的最大困难，以及你最终是如何解决的？这个项目给你带来了什么？
+- 自己的优势和弱势定位： 可能会有各种不同的问法，如“你觉得你的优点是什么？” “你比较擅长的事情是？”不过只要你对自己的有一个较清晰的定位（哪怕是错的），你就可以以不变应万变。拿出纸和笔记录下自己的优势和弱势，并附加上相应的案例（你的故事）。
+- 尽可能了解面试公司招聘的真实职位： 招聘网上的职位简介往往不够准确，要获得更准确的信息，可以直接和HR确认“你们如果聘用我，会让我具体负责什么？”，最好是可以和面试官或在他们公司的朋友交流。知道对方想招什么样的人，你会更清楚自己应该怎么做。
+- 了解面试公司的产品，猜测他们可能会遇到哪些问题: 对方招你是要去实现产品和解决问题的。比如大型的App应用，可能就会涉及插件方案，性能问题等；而小型的应用，可能更看中你的快速开发能力。
+
+
+**有条件准备的**
+- Java基础： JVM的内存模型，垃圾回收的策略；多线程同步的方式；
+- Android基础： 可以自己说一遍是怎么理解Activity的生命周期的，当然这题也是很灵活的，可能面试官不会问你生命周期的流程，只挑其中的一点进行提问，如“ onSaveStateInstance什么时候被调用？”Activity的四种启动模式。
+
+**准备了也没有用的**
+一些你现在还没有掌握的技术点，准备它们的收益不是很大。既然你还未掌握，现在再看一遍还是难以理解透彻，可能还会出现你认为自己答对了，面试官却认为你南辕北辙的情况。比如：算法、设计模式、OpenGL等，这时候看并不利于你记忆和应付面试官可能换一个角度来问你。
+
+**最后一刻**
+请再看一遍自己投递给这家公司的简历，如实按简历上的回答，保证你的诚信。如果你的说法和简历上不相符，对你的影响是很大的。
+
+链接：https://www.jianshu.com/p/db906f194bd2
+
+****
+
+<h2 id="Java内存模型">
+Java内存模型
+</h2>
+
+[返回目录](#目录)
+
+面试题：Java的内存模型
+标准答案:Java内存模型即Java Memory Model，简称JMM。JMM定义了Java 虚拟机(JVM)在计算机内存(RAM)中的工作方式。程序中的变量存储在主内存中，每个线程拥有自己的工作内存并存放变量的拷贝，线程读写自己的工作内存，通过主内存进行变量的交互。JMM就是规定了工作内存和主内存之间变量访问的细节，通过保障原子性、有序性、可见性来实现线程的有效协同和数据的安全。
+
+面试题：JVM如何判断一个对象实例是否应该被回收？
+标准答案: 垃圾回收器会建立有向图的方式进行内存管理，通过GC Roots来往下遍历，当发现有对象处于不可达状态的时候，就会对其标记为不可达，以便于后续的GC回收。
+
+面试题：说说JVM的垃圾回收策略。
+标准答案: JVM采用分代垃圾回收。在JVM的内存空间中把堆空间分为年老代和年轻代。将大量创建了没多久就会消亡的对象存储在年轻代，而年老代中存放生命周期长久的实例对象。
+
+链接：https://www.jianshu.com/p/7e0833df599b
+
+****
+
+<h2 id="Binder的线程数">
+Binder的线程数
+</h2>
+
+[返回目录](#目录)
+
+**多个进程同时调用一个ContentProvider的query获取数据，ContentPrvoider是如何反应的呢？**
+> 一个content provider可以接受来自另外一个进程的数据请求。尽管ContentResolver与ContentProvider类隐藏了实现细节，但是ContentProvider所提供的query()，insert()，delete()，update()都是在ContentProvider进程的线程池中被调用执行的，而不是进程的主线程中。这个线程池是有Binder创建和维护的，其实使用的就是每个应用进程中的Binder线程池。
+
+**你觉得Android设计ContentProvider的目的是什么呢？**
+1. 隐藏数据的实现方式，对外提供统一的数据访问接口；
+2. 更好的数据访问权限管理。ContentProvider可以对开发的数据进行权限设置，不同的URI可以对应不同的权限，只有符合权限要求的组件才能访问到ContentProvider的具体操作。
+3. ContentProvider封装了跨进程共享的逻辑，我们只需要Uri即可访问数据。由系统来管理ContentProvider的创建、生命周期及访问的线程分配，简化我们在应用间共享数据（进程间通信）的方式。我们只管通过ContentResolver访问ContentProvider所提示的数据接口，而不需要担心它所在进程是启动还是未启动。
+
+面试题：运行在主线程的ContentProvider为什么不会影响主线程的UI操作?
+> ContentProvider的onCreate()是运行在UI线程的，而query()，insert()，delete()，update()是运行在线程池中的工作线程的，所以调用这向个方法并不会阻塞ContentProvider所在进程的主线程，但可能会阻塞调用者所在的进程的UI线程！所以，调用ContentProvider的操作仍然要放在子线程中去做。虽然直接的CRUD的操作是在工作线程的，但系统会让你的调用线程等待这个异步的操作完成，你才可以继续线程之前的工作。
+
+> 当我聊到这个线程池中有16个线程可供使用时，面试官对这个结论提出了一些看法。一个进程创建后为了和在系统进程中的AMS（ActivityManangerService）通信，一个APK进程本身就是在Binder线程池中占用2个线程来维持Binder的通信。那么，上面提到的第二种不同进程的案例中，ContentProvider能同时使用的线程数量应该是14个才对啊。怎么我们测试的结果会是16呢？这一点我当时和面试官是有分歧的。因为我记得做过实验结果就是16个线程，但如过一个进程只维护一个Binder线程池的话，确实应该是14个线程才对。在这点上，我确实没有理解清楚Binder的线程池，所以我知道了实际效果可以同时运行16个线程（假设自己的实验没出错），但却无法解释面试官提的“为什么不是14个的问题”。我面试回来后，看一些说明和代码片段，一个初步的判断是，面试官提到的和AMS通信用到的线程并不会算在这个线程池中。
+
+链接：https://www.jianshu.com/p/c70ae80cf64d
+
+
+****
+
+<h2 id="我的问题问完了，你有什么要问的吗？">
+我的问题问完了，你有什么要问的吗？
+</h2>
+
+[返回目录](#目录)
+
+**如果不问**
+如果你也没什么问题想问，那么可以委婉的告诉面试官自己没什么问题要问。如：“通过一些朋友和渠道，其实我对贵公司的一些文化和愿景都还比较了解，所以我暂时也没有什么想问的，我也很希望能加入到这样一个环境中。”
+
+**技术面试官：** 在提出问题前，我们要先看一下现在这个面试官是处在公司的什么位置。如果他也是一个开发人员，在对你做技术面试，那不妨聊聊团队的一些技术栈方面的问题。如：“你们的团队在采用敏捷开发的方式吗？”然后和面试官聊聊敏捷，分享一些各自的经验，方便双方进一步的了解。并不是所有的公司都会用敏捷，那我们可以问一些更开放性的问题，如：“在你们的项目中遇到技术障碍了，公司有什么机制去应对吗？”可以就此看看这个公司是否重视技术，有没有一些技术提升和交流的传统。
+**管理类面试官：** 如果面试官是管理职位的，那么可以问问团队组成；假设你能加入的话，会分配在哪个team，team中有没有带你的人或让你得到进步的模式；或者了解一下他对团队目前状态的看法，是否有什么变化他想引入团队或组织的。也就是向管理类面试官提问，你可以问一些对团队现状和未来预期（目标）相关的一些问题，这些问题会让你提前知道，进入这家公司后你应该往哪个方向去努力。
+**HR：** 公司文化什么的HR一般会主动向你介绍，薪酬和福利不清楚的地方也可以继续沟通。
+
+>管理者：问战略；技术人员：问战术；HR行政人员：问后勤
+
+链接：https://www.jianshu.com/p/4b3bb0f51d17
+
+
+
+
+
+
+
+
+
+
+
+
+遇到两种“虐心”的情况：一种是投了简历后石沉大海，一种是面试时被问的体无完肤。
+你只要把一次面试发现的问题都列出来，改掉其中一项最急迫需要改善的。只要你多“被虐”几次后，面试官也不需要再“虐”你了，因为他可以很容易给你下结论了。
+
+
+**你是怎么知道自己技术差的？**
+- 面试官问了一两个基础的技术问题后就不再问技术了；
+- 别人说的技术问题自己都听不懂;
+- leader总是分简单的工作给自己；
+- 工作时觉得很痛苦，每个问题或者功能要很久才能处理好；
+
+**高手注重细节**
+> 可以说厉害的人，或者叫高手，可能只是比较多在意这些细节而已。在实践中的经历告诉我，很多难于解决的性能问题，并不是因为有一个影响性能的问题无法攻克，而是没有一个明显的制约因素，是有各种小问题一点一点堆积起来，最终积重难返。所以，把细节做好，或者意识到细节的地方可能引发的问题，对我们解决问题是很有帮助的，不要浪费了让你可以成长的细节。
 
 **没有技术深度的苦恼**
 > 当我们是初级工程师的时候，最希望的就是有丰富的项目经验，好把自己苍白干瘪的简历填的炫丽饱满。然而随着时间的积累，简历上的项目是挺“饱满”的了，但我们只看“外表”的行为造成了自己另一个困境：看似很资深，其实又没有做过什么有难度的事情，工作了十年可能只是1年的工作经验用了9次。正如这位去面试的读者，从简历上看确实是能看到他辉煌的项目经历，在经历之下会发现简历中没有深入的地方。有些虽然写的很有技术，但是确实只是在使用API的程度而已；有些解决问题的方式很有技巧，但还不成体系。可惜没有多走两步，没有去研究和扩展。随着年龄的增长，你原来的优势都在慢慢变成你的劣势。我们没有技术深度，最重要的原因有两个：第一是回避问题，第二是没有兴趣。链接：https://www.jianshu.com/p/40d24a1f6958
 
+**怎么学习一个开源框架？**
 > 很多时候也是基于工作需要或者自己的兴趣才会去弄懂一个开源框架的代码和架构。基于使用的话，确实不需要特别深入，能像你一样画个流程图，理一个大概，知道它的一些缺陷和优点其实就很不错了。不过熟悉了一两个框架后，如果有意识提高自己的话，往往会考虑自己能不能写了这样的框架，它倒底是怎么做到的，自己去实现会怎么做。如果没时间的话，可以先回忆一些平时使用这些框架遇到的问题及你的解决方法，如果完全没有问题，那就要对应不同的问题来和面试官交流了，其实也可以分享一些自己对它的看法或改进想法。
 
-你在工作中有遇到什么问题？
+**你在工作中有遇到什么问题？**
 > 在工作中开发时遇到一个需求：在主Activity M 中启动另一个Activity B，但是要求必须要上次的A Activity执行完onDestory()方法，怎么办？
