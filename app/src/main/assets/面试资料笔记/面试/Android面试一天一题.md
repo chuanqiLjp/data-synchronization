@@ -1,6 +1,117 @@
+---
+title: Android面试一天一题
+layout: post
+date: 2018-03-27 17:52:58
+comments: true
+categories:
+  - Android
+  - 面试
+tags: [2018面试,Android面试]
+keywords: 2018面试,Android面试
+description:
+---
+
+>我的简书：https://www.jianshu.com/u/c91e642c4d90
+我的CSDN：http://blog.csdn.net/wo_ha
+我的GitHub：https://github.com/chuanqiLjp
+我的个人博客：https://chuanqiljp.github.io/
+
+
 <h2 id="目录">
 目录
 </h2>
+
+* [知道Service吗，它有几种启动方式？](#知道Service吗，它有几种启动方式？)
+
+* [用广播来更新UI界面好吗？](#用广播来更新UI界面好吗？)
+
+* [怎么理解Activity的生命周期？](#怎么理解Activity的生命周期？)
+
+* [如何判断Activity是否在运行？](#如何判断Activity是否在运行？)
+
+* [自定义View的状态是如何保存的？](#自定义View的状态是如何保存的？)
+
+* [通过new创建的View实例它的onSaveStateInstance会被调用吗？](#通过new创建的View实例它的onSaveStateInstance会被调用吗？)
+
+* [Java的值传递和引用传递问题](#Java的值传递和引用传递问题)
+
+* [能讲讲Android的Handler机制吗？](#能讲讲Android的Handler机制吗？)
+
+* [HandlerThread常规使用步骤](#HandlerThread常规使用步骤)
+
+* [两个Activity之间如何传递参数？](#两个Activity之间如何传递参数？)
+
+* [如何理解Android中的Context，它有什么用？](#如何理解Android中的Context，它有什么用？)
+
+* [如何优化ListView的性能？](#如何优化ListView的性能？)
+
+* [如何实现应用内多语言切换？](#如何实现应用内多语言切换？)
+
+* [在项目中使用AsyncTask会有什么问题吗](#在项目中使用AsyncTask会有什么问题吗)
+
+* [修改SharedPreferences后两种提交方式有什么区别？](#修改SharedPreferences后两种提交方式有什么区别？)
+
+* [有使用过ContentProvider码？能说说Android为什么要设计ContentProvider这个组件吗？](#有使用过ContentProvider码？能说说Android为什么要设计ContentProvider这个组件吗？)
+
+* [如何处理线程同步的问题？](#如何处理线程同步的问题？)
+
+* [如何准备自我介绍](#如何准备自我介绍)
+
+* [如何对SQLite数据库中进行大量的数据插入？](#如何对SQLite数据库中进行大量的数据插入？)
+
+* [Activity的启动模式（launchMode）有哪些，有什么区别？](#Activity的启动模式（launchMode）有哪些，有什么区别？)
+
+* [Android资源目录的读取顺序？](#Android资源目录的读取顺序？)
+
+* [有没有遇到OOM的问题？如何优化图片占用的内存空间？](#有没有遇到OOM的问题？如何优化图片占用的内存空间？)
+
+* [Android中Java和JavaScript如何交互？](#Android中Java和JavaScript如何交互？)
+
+* [两个Fragment之间如何进行通信？](#两个Fragment之间如何进行通信？)
+
+* [如何理解Android应用的进程？](#如何理解Android应用的进程？)
+
+* [如何解决ScrollView嵌套中一个ListView的滑动冲突？](#如何解决ScrollView嵌套中一个ListView的滑动冲突？)
+
+* [知道什么是ART吗？它和Dalvik有什么区别？](#知道什么是ART吗？它和Dalvik有什么区别？)
+
+* [如何检测内存泄露，如何进行内存优化？](#如何检测内存泄露，如何进行内存优化？)
+
+* [如何准备和Boss（或经理）的面试](#如何准备和Boss（或经理）的面试)
+
+* [你在Android开发中遇到的技术难题是什么，你是怎么解决的？](#你在Android开发中遇到的技术难题是什么，你是怎么解决的？)
+
+* [谈谈你使用过的Android开源库，是否有遇到过什么问题？](#谈谈你使用过的Android开源库，是否有遇到过什么问题？)
+
+* [谈谈MVP和MVVM模式，你有在自己的项目中使用过吗？](#谈谈MVP和MVVM模式，你有在自己的项目中使用过吗？)
+
+* [如何快速突击Android面试](#如何快速突击Android面试)
+
+* [介绍一下你经常浏览的Android技术网站](#介绍一下你经常浏览的Android技术网站)
+
+* [Binder是什么？它是如何实现跨进程通信的？](#Binder是什么？它是如何实现跨进程通信的？)
+
+* [一套高级工程师的面试题](#一套高级工程师的面试题)
+
+* [达到如下要求的简历可以认为是好的简历。](#达到如下要求的简历可以认为是好的简历。)
+
+* [你有写博客或者其他的输出吗？如果有，谈谈你的经历或者看法。](#你有写博客或者其他的输出吗？如果有，谈谈你的经历或者看法。)
+
+* [如何系统学习Android开发？](#如何系统学习Android开发？)
+
+* [你有使用过Kotlin来开发Android应用吗？说说Kotlin和Java有什么区别？](#你有使用过Kotlin来开发Android应用吗？说说Kotlin和Java有什么区别？)
+
+* [你是如何解决Android的布局嵌套问题的？](#你是如何解决Android的布局嵌套问题的？)
+
+* [设计模式](#设计模式)
+
+* [离面试不到24小时，该准备什么？](#离面试不到24小时，该准备什么？)
+
+* [Java内存模型](#Java内存模型)
+
+* [Binder的线程数](#Binder的线程数)
+
+* [我的问题问完了，你有什么要问的吗？](#我的问题问完了，你有什么要问的吗？)
 
 [返回目录](#目录)
 
@@ -1232,15 +1343,6 @@ Binder的线程数
 >管理者：问战略；技术人员：问战术；HR行政人员：问后勤
 
 链接：https://www.jianshu.com/p/4b3bb0f51d17
-
-
-
-
-
-
-
-
-
 
 
 
