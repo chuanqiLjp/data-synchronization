@@ -112,6 +112,8 @@ description:
 * [Binder的线程数](#Binder的线程数)
 
 * [我的问题问完了，你有什么要问的吗？](#我的问题问完了，你有什么要问的吗？)
+* [为什么Dialog不能用Application的Context](#为什么Dialog不能用Application的Context)
+* [](#)
 
 [返回目录](#目录)
 
@@ -1344,6 +1346,25 @@ Binder的线程数
 
 链接：https://www.jianshu.com/p/4b3bb0f51d17
 
+****
+
+<h2 id="为什么Dialog不能用Application的Context">
+为什么Dialog不能用Application的Context
+</h2>
+
+[返回目录](#目录)
+
+报错：“BadTokenException: Unable to add window -- token null is not for an application”，发生一个BadTokenException的异常，不能添加Window，原因是使用了Application、Service、BroadcastReceiver的Context，而这些Context没有appToken，四大组件中Activity的Context才有
+
+- Window: 定义窗口样式和行为的抽象基类，用于作为顶层的view加到WindowManager中，其实现类是PhoneWindow。每个Window都需要指定一个Type（应用窗口、子窗口、系统窗口）。Activity和Dialog对应的窗口是应用窗口；PopupWindow，ContextMenu，OptionMenu是常用的子窗口；像Toast和系统警告提示框（如ANR）就是系窗口，还有很多应用的悬浮框也属于系统窗口类型。
+- WindowManager：用来在应用与window之间的管理接口，管理窗口顺序，消息等。
+- WindowManagerService：简称Wms，WindowManagerService管理窗口的创建、更新和删除，显示顺序等，是WindowManager这个管理接品的真正的实现类。它运行在System_server进程，作为服务端，客户端（应用程序）通过IPC调用和它进行交互。
+- Token：这里提到的Token主是指窗口令牌（Window Token），是一种特殊的Binder令牌，Wms用它唯一标识系统中的一个窗口。
+
+**解决方法**
+> 在dialog调用show之前dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ERROR);并在AndroidManifest声明权限：android:name="android.permission.SYSTEM_ALERT_WINDOW"
+
+链接：https://www.jianshu.com/p/628ac6b68c15
 
 
 遇到两种“虐心”的情况：一种是投了简历后石沉大海，一种是面试时被问的体无完肤。
