@@ -171,10 +171,55 @@ Service的启动方式及生命周期
 
 [返回目录](#目录)
 
+1. **通过start方式启动Service：** context.startService()   ---> onCreate() ---> onStartCommand() ---> Service running  --->  调用context.stopService()   ---> onDestroy()，第一次 启动服务时，运行 onCreate -->onStartCommand，后面在启动服务时，服务只执行onStartCommand，不再执行OnCreate
+2. **通过bind方式启动Service:** context.bindService()  --->  onCreate()  --->  onBind()  --->  Service running  ---> 所有客户端被销毁或客户端调用了unbindService()  --->  onUnbind()   --->  onDestroy()，第一次绑定时会调用onCreate->onBind()。随后无论哪个组件再绑定几次该Service。服务A的onCreate()和onBind()只调用一次。
 
-- 使用广播更新UI界面好吗？
-- 注册广播有几种方式，有何优缺点
-- 有使用过ContentProvider码？能说说Android为什么要设计ContentProvider这个组件吗？
+****
+
+<h2 id="注册广播有几种方式，有何优缺点">
+注册广播有几种方式，有何优缺点
+</h2>
+
+[Android四大组件——BroadcastReceiver普通广播、有序广播、拦截广播、本地广播、Sticky广播、系统广播](https://blog.csdn.net/qq_30379689/article/details/53341313)
+
+[返回目录](#目录)
+
+1. 普通广播（自定义广播）：普通广播是完全异步的，通过Context的sendBroadcast()方法来发送，消息传递效率比较高，但所有receivers（接收器）的执行顺序不确定。缺点是：接收者不能将处理结果传递给下一个接收者，并且无法终止广播Intent的传播，直到没有与之匹配的广播接收器为止。
+    1. 代码：注册广播：registerReceiver(mReceiver,intentFilter);反注册：unregisterReceiver(receiver);
+    2. 清单文件：在与Activity同级声明广播接收者名称和intent-filter过滤器
+    3. 发送广播：sendBroadcast(intent);intent要设置好相关的匹配；
+2. 有序广播：有序广播通过Context.sendOrderedBroadcast()来发送，所有的广播接收器优先级依次执行，广播接收器的优先级通过receiver的intent-filter中的android:priority属性来设置，数值越大优先级越高。当广播接收器接收到广播后，可以使用setResult()函数来结果传给下一个广播接收器接收，然后通过getResult()函数来取得上个广播接收器接收返回的结果。当广播接收器接收到广播后，也可以用abortBroadcast()函数来让系统拦截下来该广播，并将该广播丢弃，使该广播不再传送到别的广播接收器接收，
+    1. 注册广播：这里的注册方式和普通广播是一样的，这里的区别在于priority属性，确定了他们之间的优先级，
+    2. 发送广播：sendOrderedBroadcast(intent,null);这里需要发送的是有序广播，否则在接收者中通过setResult()和getResult()方法会报错，因为只有有序广播才能传递结果
+    3. 拦截广播：abortBroadcast();
+    4. 有序广播、拦截广播的拓展——终结广播：现在有这样的一个应用场景，按照上面的程序走，只能在第一个广播中被拦截住了，后面的广播则不执行。如果这个时候我们需要一个不管有没有被拦截都必须执行的广播，我们称为终结广播，那应该怎么办。同样的，发送有序广播也考虑到这一点，通过以下代码来发送广播，并指定我们不管有没有被拦截都必须执行的终结广播，sendOrderedBroadcast(intent, null, new PriorityBroadcastReceiver.LowPriority(),new Handler(), 0, null, null);
+3. 本地广播：在API21的Support v4包中新增本地广播，也就是LocalBroadcastManager。由于之前的广播都是全局的，所有应用程序都可以接收到，这样就会带来安全隐患，所以我们使用LocalBroadcastManager只发送给自己应用内的信息广播，限制在进程内使用,它的用法很简单，只需要把调用context的sendBroadcast、registerReceiver、unregisterReceiver的地方换为LocalBroadcastManager.getInstance(Context context)中对应的函数即可。这里创建广播的过程和普通广播是一样的过程
+    1. 注册：LocalBroadcastManager.getInstance(ReceiverActivity.this).registerReceiver(receiver,new IntentFilter("com.handsome.hensen"));
+    2. 反注册：LocalBroadcastManager.getInstance(ReceiverActivity.this).unregisterReceiver(receiver);
+    3. 发送异步广播：LocalBroadcastManager.getInstance(ReceiverActivity.this).sendBroadcast(intent);
+    4. 发送同步广播：LocalBroadcastManager.getInstance(ReceiverActivity.this).sendBroadcastSync(intent);
+4. Sticky广播：sticky广播通过Context.sendStickyBroadcast()函数来发送，用此函数发送的广播会一直滞留，当有匹配此广播的广播接收器被注册后，该广播接收器就会收到此条信息。使用此函数需要发送广播时，需要获得BROADCAST_STICKY权限，sendStickyBroadcast只保留最后一条广播，并且一直保留下去，这样即使已经有广播接收器处理了该广播，当再有匹配的广播接收器被注册时，此广播仍会被接收。如果你只想处理一遍该广播，可以通过removeStickyBroadcast()函数来实现。这里创建广播的过程和普通广播是一样的过程；
+5. 系统广播：
+> 屏幕被关闭之后的广播：Intent.ACTION_SCREEN_OFF；屏幕被打开之后的广播：Intent.ACTION_SCREEN_ON；充电状态，或者电池的电量发生变化：Intent.ACTION_BATTERY_CHANGED；关闭或打开飞行模式时的广播：Intent.ACTION_AIRPLANE_MODE_CHANGED；表示电池电量低：Intent.ACTION_BATTERY_LOW；表示电池电量充足，即电池电量饱满时会发出广播：Intent.ACTION_BATTERY_OKAY；按下照相时的拍照按键(硬件按键)时发出的广播：Intent.ACTION_CAMERA_BUTTON
+
+****
+
+<h2 id="说说Android为什么要设计ContentProvider这个组件吗">
+说说Android为什么要设计ContentProvider这个组件吗
+</h2>
+
+[返回目录](#目录)
+
+1. 封装。对数据进行封装，提供统一的接口，使用者完全不必关心这些数据是在DB，XML、Preferences或者网络请求来的。当项目需求要改变数据来源时，使用我们的地方完全不需要修改。
+2. 提供一种跨进程数据共享的方式
+3. ContentResolver接口的notifyChange函数来通知那些注册了监控特定URI的ContentObserver对象，使得它们可以相应地执行一些处理。ContentObserver可以通过registerContentObserver进行注册。
+
+> 每个ContentProvider的操作是在哪个线程中运行的呢（其实我们关心的是UI线程和工作线程）？比如我们在UI线程调用getContentResolver().query查询数据，而当数据量很大时（或者需要进行较长时间的计算）会不会阻塞UI线程呢？
+
+1. ContentProvider和调用者在同一个进程，则ContentProvider的方法（query/insert/update/delete等）和调用者是处在同一线程中的；
+2. ContentProvider和调用者在不同的进程，则ContentProvider的方法会运行在它自身所在进程的一个Binder线程中。
+3. 以上两种方式在ContentProvider的方法没有执行完成前都会阻塞调用者，因此会阻塞UI线程
+
 
 - 两个Fragment之间如何进行通信？
 - Fragment的重影问题，依附的Activity被销毁，短生命周期持有常生命周期的引用
@@ -298,4 +343,40 @@ Service的启动方式及生命周期
 - JVM虚拟机的内存回收策略，JVM的GC原理
 - Java的引用类型：强引用、软引用、弱引用、虚引用
 - 集合的树结构，Set与List的区别，数据的排序，sort方法，让类实现Comparable这个接口重写里面的compareTo()方法
+
+List集合:特点:有序，可以重复
+Set集合:特点:无序，不可以重复  常见子类：HashSet、TreeSet  （在java中带有Tree的就有排序的功能）
+无序:
+Set集合没有拓展方法------->简单
+HansCode值的来历
+   HashCode值默认的是当前对象的内存地址
+hashSet的存储原理
+   1:当我们调用hashSet的add方法的时候，实际上首先会调用当前对象的HashCode值来进行比较,比较的结果有两种
+                1:HashCode值不等的时候
+                  他会把当前的hashCode值通过一系列的移位运算计算出当前对象应该存储的地点,然后进行存储
+                2:HashCode值相等的时候
+                  然后再比较当前对象的equals方法是否返回true
+                         1:返回true说明当前对象确实存在那么就不存储当前的数据/false
+                         2:当他返回fasle的时候那么就存储当前的对象
+TreeSet：
+    能干什么?  能够对加入集合的数据进行排序
+TreeSet的方法
+     E ceiling(E e) 返回此 set 中大于等于给定元素的最小元素；如果不存在这样的元素，则返回 null。
+     first() 返回此 set 中当前第一个（最低）元素
+     floor(E e) 返回此 set 中小于等于给定元素的最大元素；如果不存在这样的元素，则返回 null。
+如何定义比较器
+  第一种方法:
+     第一步:让当前对象实现于Comparable这个接口重写里面的compareTo（）方法
+     第二步:自定义比较规则
+             比较谁就用谁来做减法
+                减法的结果三个
+                如果减法的结果是正数说明前面比后面打
+                如果减法的结果是0说明两个一样大
+                如果减法的结果是负数说明后面比前面大
+ 第二种方法:
+            编写一个类实现于Comparator重写里面那个方法
+            定义哈那个比较规则
+![image.png](https://upload-images.jianshu.io/upload_images/4143664-7ce532fabd3ec2b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
 - "=="与equles的区别
