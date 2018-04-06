@@ -1,33 +1,10 @@
-### 四大组件
-- AndroidManifest.xml的里有什么和作用
-- Activity 的生命周期：正常的生命周期，屏幕旋转时的生命周期，
-- Activity 的启动模式
-- 如何判断Activity是否在运行？
-- 两个Activity之间如何传递参数？
-- Service 的启动方式及声明周期
-- 使用广播更新UI界面好吗
-- 注册广播有几种方式，有何优缺点
-- 有使用过ContentProvider码？能说说Android为什么要设计ContentProvider这个组件吗？
-
-### 性能优化
-- 布局优化
-- 绘制优化
-- 内存泄露优化（MAT分析和LeakCanary分析检测内存泄露）
-- ListView的优化,ListView如何优化，复用的原理，为什么会图片错位，如何解决，分页的思想是什么。
-- Bitmap的优化
-- 数据库的优化
-
-### UI
-- 说说Android事件分发机制，ViewGroup和View上的分发有什么不同？
-- View的绘制流程
-- 如何实现一个自定义View
-- SurfaceView的介绍
-- Touch事件的传递机制
-- 自定义View的状态是如何保存的？
-- 通过new创建的View实例它的onSaveStateInstance会被调用吗？
-- 有遇到过哪些屏幕和资源适配问题？
-- Android中的动画有哪些有什么区别
-- 如何解决ScrollView嵌套中一个ListView的滑动冲突？
+# 非技术
+- 你对未来三到五年的职业规划。
+- 项目中遇到哪些难题，最终你是如何解决的？
+- 自我介绍
+- 为什么从上一家公司离职
+- 我的问题问完了，你还有什么要问的
+> 对这次面试做个总结和对我评价(其实就看也看出是否有意向);根据面试，您觉得我的能力是否能够胜任贵公司的工作; 您觉得我哪方面知识需要深入学习或者我的不足在那些方面，今后我该注意什么; 这些问题不仅能帮助你，还能对这次面试做到心中有数。
 
 ### 开源框架
 - 常用哪些开源项目，说说最熟悉的一个？
@@ -44,13 +21,6 @@
 - 广告条或启动页：banner
 - 左滑删除：SwipeLayout
 
-
-### 线程
-- HandlerThread常规使用步骤
-- 说说AsyncTask原理
-- 如何处理线程同步的问题？几种线程池
-- IntentService
-- Android子线程与主线程交互方式，原理以及各自的优缺点。
 
 ### 第三方接入
 - 支付接入：微信、支付宝、Mob第三方支付
@@ -71,9 +41,50 @@
 - 语音识别：讯飞
 - 相机：Camera360美容、锐动天地的短视频编辑、美摄（录制的视频带有美颜等特效）、趣拍（收费了）
 
+--------------------------------------------------------------------------------------------------------------------------------
+
+### 四大组件
+- AndroidManifest.xml的里有什么和作用
+- Activity 的生命周期：正常的生命周期，屏幕旋转时的生命周期，
+- Activity 的启动模式
+- A是singleTask/singleInstance/singleTop，使用startActivityForResult启动B，需要获取B回传的数据，如何操作？此时会立即回调A的onActivityResult方法，考虑使用A的onNewIntent方法接受
+- 如何判断Activity是否在运行？
+- 两个Activity之间如何传递参数？
+- Service 的启动方式及声明周期
+- 使用广播更新UI界面好吗
+- 注册广播有几种方式，有何优缺点
+- 有使用过ContentProvider码？能说说Android为什么要设计ContentProvider这个组件吗？
+
+### 性能优化
+- 布局优化
+- 绘制优化
+- 内存泄露优化（MAT分析和LeakCanary分析检测内存泄露）
+- ListView的优化,ListView如何优化，复用的原理，为什么会图片错位，如何解决，分页的思想是什么。
+- Bitmap的优化
+- 数据库的优化
+
+### UI
+- 说说Android事件分发机制，ViewGroup和View上的分发有什么不同？
+- View的绘制流程
+- 如何实现一个自定义View，自定义View的流程
+- SurfaceView的介绍
+- Touch事件的传递机制
+- 自定义View的状态是如何保存的？
+- 通过new创建的View实例它的onSaveStateInstance会被调用吗？
+- 有遇到过哪些屏幕和资源适配问题？
+- Android中的动画有哪些有什么区别
+- 如何解决ScrollView嵌套中一个ListView的滑动冲突？
+
+### 线程
+- HandlerThread常规使用步骤
+- 说说AsyncTask原理
+- 如何处理线程同步的问题？几种线程池
+- IntentService
+- Android子线程与主线程交互方式，原理以及各自的优缺点。
+- 对静态方法加锁和对普通方法加锁有什么不同
 
 ### 高级进阶
-- 设计模式：单例模式（会手写）、观察者模式、建造者模式、
+- 设计模式：单例模式（会手写）、观察者模式、建造者模式、工厂模式
 - 观察者模式与回调函数的区别
 - 设计架构：MVC、MVP、MVVM、DataBinding的使用
 - Handler的运行机制(原理)，线程间是如何通信的？
@@ -96,9 +107,12 @@
 - Android四大组件启动机制之Activity启动过程
 - 无障碍服务AccessibilityService
 
+
+
 ### 其他
 - XML的有哪几种解析区别是什么？
 - JSON的解析有哪些？
+- JSON与XML的区别，为啥使用JSON传输网络数据
 - Android的数据存储方式
 - ANR是什么？怎么避免
 - 什么情况会导致ForceClose，如何避免
@@ -107,12 +121,20 @@
 - 如何对SQLite数据库中进行大量的数据插入？
 - Android中Java和JavaScript如何交互？
 - 两个Fragment之间如何进行通信？
+- Fragment的重影问题，依附的Activity被销毁，短生命周期持有常生命周期的引用
+- Activity与Fragment的通信
+- Activity多次调用Fragment的setArguments方法会崩溃
 - 知道什么是ART吗？它和Dalvik有什么区别？
 - 如何对SQLite数据库中进行大量的数据插入？
 - 知道什么是ART吗？它和Dalvik有什么区别？
 - 运行时权限、Design风格、
 - Android6.0/7.0/8.0特性，kotlin语言，I/O大会
 - 你在公司中用的什么代码管理，如何解决git冲突；你说用的代码管理工具什么，为什么会产生代码冲突，该如何解决
+- TCP/UDP有什么异同
+- OOM，性能优化，ListView的滑动优化，
+
+
+
 
 
 # Java基础
@@ -124,42 +146,12 @@
 - 说下java虚拟机的理解，回收机制，JVM是如何回收对象的，有哪些方法等
 - 排序算法：冒泡排序、选择排序、插入排序、希尔排序、堆排序、快速排序、归并排序、基数排序
 - HashMap、HashSet、HashTable、LinkedHashMap、LinkedHashSet、ArrayList、LinkedList的源码
+- JVM虚拟机的内存回收策略，JVM的GC原理
+- Java的引用类型：强引用、软引用、弱引用、虚引用
+- 集合的树结构，Set与List的区别，数据的排序，sort方法，让类实现Comparable这个接口重写里面的compareTo()方法
+- "=="与equles的区别
+
+
 
 # 实战编程
 - 手写一段代码，如何找出一段字符串中，出现最多的汉字是哪个。
-
-
-# 非技术
-- 你对未来三到五年的职业规划。
-- 项目中遇到哪些难题，最终你是如何解决的？
-- 自我介绍
-- 为什么从上一家公司离职
-- 我的问题问完了，你还有什么要问的
-
-****
-****
-
-# 实际面试遇到的面试问题
-- 线程同步，对静态方法加锁和对普通方法加锁有什么不同
-- JVM虚拟机的内存回收策略
-- TCP/UDP有什么异同
-- JSON与XML的区别，为啥使用JSON传输网络数据
-- 设计模式：单列模式，观察者模式、工厂模式
-- JNI、NDK开发知道多少
-----------------------------
-- JVM的GC原理
-- Collections集合相关
-- Activity与Fragment的通信
-- Activity多次调用Fragment的setArguments方法会崩溃
-- A是singleTask/singleInstance/singleTop，使用startActivityForResult启动B，需要获取B回传的数据，如何操作？此时会立即回调A的onActivityResult方法，考虑使用A的onNewIntent方法接受
-- Java的引用类型：强引用、软引用、弱引用、虚引用
-- 集合的树结构，Set与List的区别，数据的排序，sort方法，让类实现Comparable这个接口重写里面的compareTo()方法
-- Fragment的重影问题，依附的Activity被销毁，短生命周期持有常生命周期的引用
-- Activity的启动模式：具体的场景
-- OOM，性能优化，ListView的滑动优化，"=="与equles的区别
-- 自定义View的流程
-
-
-
-
-> 对这次面试做个总结和对我评价(其实就看也看出是否有意向);根据面试，您觉得我的能力是否能够胜任贵公司的工作; 您觉得我哪方面知识需要深入学习或者我的不足在那些方面，今后我该注意什么; 这些问题不仅能帮助你，还能对这次面试做到心中有数。
