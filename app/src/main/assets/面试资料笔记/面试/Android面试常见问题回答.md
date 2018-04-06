@@ -67,11 +67,13 @@ Activity的启动模式
 
 [返回目录](#目录)
 
-> 
+1. standard：标准模式，系统默认的模式，每次启动一个Activity都会创建一个新的实例，不管该实例是否已经存在，该模式下，谁启动了这个Activity就把这个Activity压入启动它的Activity所在的栈中，那个具有任务栈的Context启动Activity就会把Activity实例压入到那个任务栈中，非Activity类型的Context（如：Application、Service）并没有所谓的任务栈，若需要启动Activity需添加FLAG_ACTIVITY_NEW_TASK标记位，这样启动时会创建一个新的任务栈，待启动的Activity实际是以singleTask模式启动了；
 
-1. standard：标准模式，系统默认的模式，每次启动一个Activity都会创建一个新的实例，不管该实例是否已经存在，该模式下，谁启动了这个Activity就把这个Activity压入启动它的Activity所在的栈中，那个具有任务栈的Context启动Activity就会把Activity实例压入到那个任务栈中，非Activity类型的Context（如：Application、Service）并没有所谓的任务栈，若需要启动Activity需添加FLAG_ACTIVITY_NEW_TASK标记位，这样启动时会创建一个新的任务栈，待启动的Activity实际是以singleTask模式启动了
-2. singleTop：栈顶复用模式，
+2. singleTop：栈顶复用模式，如果在任务的栈顶正好存在该Activity的实例，就重用该实例( 会调用实例的 onNewIntent() )，否则就会创建新的实例并放入栈顶，即使栈中已经存在该Activity的实例，只要不在栈顶，都会创建新的实例。使用场景如新闻类或者阅读类App的内容页面。
 
+3. singleTask：栈内复用模式，一种单实例模式，如果在栈中已经有该Activity的实例，就重用该实例(会调用实例的 onNewIntent() )。重用时，会让该实例回到栈顶，因此在它上面的实例将会被移出栈。如果栈中不存在该实例，将会创建新的实例放入栈中。使用场景如浏览器的主界面。不管从多少个应用启动浏览器，只会启动主界面一次，其余情况都会走onNewIntent，并且会清空主界面上面的其他页面。
+
+4. singleInstance：单实例模式，一种加强的singleTask，在一个新栈中创建该Activity的实例，并让多个应用共享该栈中的该Activity实例。一旦该模式的Activity实例已经存在于某个栈中，任何应用再激活该Activity时都会重用该栈中的实例( 会调用实例的 onNewIntent() )。其效果相当于多个应用共享一个应用，不管谁激活该 Activity 都会进入同一个应用中。使用场景如闹铃提醒，将闹铃提醒与闹铃设置分离。singleInstance不要用于中间页面，如果用于中间页面，跳转会有问题，比如：A -> B (singleInstance) -> C，完全退出后，在此启动，首先打开的是B。
 
 ****
 
@@ -132,6 +134,7 @@ Service的启动方式及生命周期
 - 有遇到过哪些屏幕和资源适配问题？
 - Android中的动画有哪些有什么区别
 - 如何解决ScrollView嵌套中一个ListView的滑动冲突？
+- Menu菜单常见的方法及作用
 
 ### 线程
 - HandlerThread常规使用步骤
