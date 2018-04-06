@@ -41,19 +41,76 @@
 - 语音识别：讯飞
 - 相机：Camera360美容、锐动天地的短视频编辑、美摄（录制的视频带有美颜等特效）、趣拍（收费了）
 
+# 实战编程
+- 手写一段代码，如何找出一段字符串中，出现最多的汉字是哪个。
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 ### 四大组件
+> 如果一个进程中没有四大组件在运行那么该进程会很快被系统杀死，比较好的方法是将后台工作放在Service中从而保证进程有一定的优先级
+
 - AndroidManifest.xml的里有什么和作用
-- Activity 的生命周期：正常的生命周期，屏幕旋转时的生命周期，
-- Activity 的启动模式
+
+- Activity 的生命周期：正常的生命周期，
+> 旧的Activity一定先会调用onPause方法然后新的Activity再启动，所以onPause不能做重量级的操作，
+
+- 屏幕旋转时的生命周期
+> 建议配置android:configChanges="orientation|screenSize|keyboardHidden",1.不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，切横屏时会执行一次，切竖屏时会执行两次;2.设置Activity的android:configChanges="orientation"时，切屏还是会重新调用各个生命周期，切横、竖屏时只会执行一次;3.设置Activity的android:configChanges="orientation|keyboardHidden"时，切屏不会重新调用各个生命周期，只会执行 onConfigurationChanged 方法。
+
+- Activity异常时数据的保存
+> 系统会调用onSaveInstanceState()来保存Activity的状态，onSaveInstanceState在onStop之前调用正常情况下不会被调用并会把所保存的Bundle传递给onCreate和onRestoreInstanceState方法，当Activity被重建后会调用onRestoreInstanceState，onRestoreInstanceState调用时间在onStart之后，通常建议使用onRestoreInstanceState去恢复数据因为不用判NULL，onSaveInstanceState和onRestoreInstanceState方法只有Activity异常终止时才会被调用，其他情况不会触发，
+
+-
+<h2 id="Activity的启动模式">
+Activity的启动模式
+</h2>
+
+[返回目录](#目录)
+
+> 
+
+1. standard：标准模式，系统默认的模式，每次启动一个Activity都会创建一个新的实例，不管该实例是否已经存在，该模式下，谁启动了这个Activity就把这个Activity压入启动它的Activity所在的栈中，那个具有任务栈的Context启动Activity就会把Activity实例压入到那个任务栈中，非Activity类型的Context（如：Application、Service）并没有所谓的任务栈，若需要启动Activity需添加FLAG_ACTIVITY_NEW_TASK标记位，这样启动时会创建一个新的任务栈，待启动的Activity实际是以singleTask模式启动了
+2. singleTop：栈顶复用模式，
+
+
+****
+
 - A是singleTask/singleInstance/singleTop，使用startActivityForResult启动B，需要获取B回传的数据，如何操作？此时会立即回调A的onActivityResult方法，考虑使用A的onNewIntent方法接受
-- 如何判断Activity是否在运行？
-- 两个Activity之间如何传递参数？
-- Service 的启动方式及声明周期
-- 使用广播更新UI界面好吗
+
+<h2 id="如何判断Activity是否在运行？">
+如何判断Activity是否在运行？
+</h2>
+
+[返回目录](#目录)
+
+
+****
+
+<h2 id="两个Activity之间如何传递参数？">
+两个Activity之间如何传递参数？
+</h2>
+
+[返回目录](#目录)
+
+
+
+****
+
+<h2 id="Service的启动方式及生命周期">
+Service的启动方式及生命周期
+</h2>
+
+[返回目录](#目录)
+
+
+- 使用广播更新UI界面好吗？
 - 注册广播有几种方式，有何优缺点
 - 有使用过ContentProvider码？能说说Android为什么要设计ContentProvider这个组件吗？
+
+- 两个Fragment之间如何进行通信？
+- Fragment的重影问题，依附的Activity被销毁，短生命周期持有常生命周期的引用
+- Activity与Fragment的通信
+- Activity多次调用Fragment的setArguments方法会崩溃
 
 ### 性能优化
 - 布局优化
@@ -62,6 +119,7 @@
 - ListView的优化,ListView如何优化，复用的原理，为什么会图片错位，如何解决，分页的思想是什么。
 - Bitmap的优化
 - 数据库的优化
+- OOM与内存泄漏
 
 ### UI
 - 说说Android事件分发机制，ViewGroup和View上的分发有什么不同？
@@ -120,10 +178,6 @@
 - 如何实现应用内多语言切换？语言的国际化
 - 如何对SQLite数据库中进行大量的数据插入？
 - Android中Java和JavaScript如何交互？
-- 两个Fragment之间如何进行通信？
-- Fragment的重影问题，依附的Activity被销毁，短生命周期持有常生命周期的引用
-- Activity与Fragment的通信
-- Activity多次调用Fragment的setArguments方法会崩溃
 - 知道什么是ART吗？它和Dalvik有什么区别？
 - 如何对SQLite数据库中进行大量的数据插入？
 - 知道什么是ART吗？它和Dalvik有什么区别？
@@ -132,10 +186,6 @@
 - 你在公司中用的什么代码管理，如何解决git冲突；你说用的代码管理工具什么，为什么会产生代码冲突，该如何解决
 - TCP/UDP有什么异同
 - OOM，性能优化，ListView的滑动优化，
-
-
-
-
 
 # Java基础
 - StringBuilder与StringBuffer的区别
@@ -150,8 +200,3 @@
 - Java的引用类型：强引用、软引用、弱引用、虚引用
 - 集合的树结构，Set与List的区别，数据的排序，sort方法，让类实现Comparable这个接口重写里面的compareTo()方法
 - "=="与equles的区别
-
-
-
-# 实战编程
-- 手写一段代码，如何找出一段字符串中，出现最多的汉字是哪个。
