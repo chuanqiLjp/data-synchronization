@@ -221,6 +221,28 @@ Service的启动方式及生命周期
 3. 以上两种方式在ContentProvider的方法没有执行完成前都会阻塞调用者，因此会阻塞UI线程
 
 
+
+****
+
+<h2 id="Fragment的生命周期">
+Fragment的生命周期
+</h2>
+
+[返回目录](#目录)
+
+1. onAttach(Activity)：连接宿主Activity；
+2. onCreate(Bundle)：创建Fragment；
+3. onCreateView(LayoutInflater,ViewGroup,Bundle)：创建Fragment的视图；
+4. onActivityCreated(Bundle)：当宿主Activity的onCreate执行完之后调用；
+5. onStart()：可见时调用
+6. onResume()：获取焦点可交互时调用
+7. onPause()：失去焦点不可交互时调用
+8. onStop()：不可见时调用
+9. onDestoryView()：销毁Fragment视图，与onCreateView对应；
+10. onDestory()：销毁Fragment，与onCreate对应；
+11. onDetach()：与宿主Activity断开连接，与onAttach对应；
+
+
 ****
 
 <h2 id="两个Fragment之间如何进行通信？">
@@ -229,7 +251,8 @@ Service的启动方式及生命周期
 
 [返回目录](#目录)
 
-可以通过getSupportFragmentManager()拿到FragmentManager，然后通过FragmentManager的findFragmentByTag或者findFragmentById拿到我们需要通信的Fragment（比如说在下面的DEMO中我们用的是FragmentTabHost，所以就使用findFragmentByTag拿到Fragment，如果Fragment是直接在XML中定义的，那么就使用findFragmentById拿到Fragment），然后就可以对拿到的Fragment进行各种操作了。
+1. 可以通过getSupportFragmentManager()拿到FragmentManager，然后通过FragmentManager的findFragmentByTag或者findFragmentById拿到我们需要通信的Fragment（比如说在下面的DEMO中我们用的是FragmentTabHost，所以就使用findFragmentByTag拿到Fragment，如果Fragment是直接在XML中定义的，那么就使用findFragmentById拿到Fragment），然后就可以对拿到的Fragment进行各种操作了。
+2. 可以先向宿主activity传值，再在宿主activity中向Fragment传值；
 
 
 ****
@@ -240,10 +263,27 @@ Service的启动方式及生命周期
 
 [返回目录](#目录)
 
-依附的Activity被销毁，短生命周期持有常生命周期的引用
+> 原因：依附的Activity被销毁，短生命周期持有常生命周期的引用，因为使用了Fragment的状态保存，当系统内存不足，Fragment的宿主Activity回收的时候，Fragment的实例并没有随之被回收。Activity被系统回收时，会主动调用onSaveInstance()方法来保存视图层（View Hierarchy），所以当Activity通过导航再次被重建时，之前被实例化过的Fragment依然会出现在Activity中，在onCreate中又再次重建了新的Fragment，综上这些因素导致了多个Fragment重叠在一起。
 
-- Activity与Fragment的通信
-- Activity多次调用Fragment的setArguments方法会崩溃
+解决方法：
+1. 通过 FragmentManager().findFragmentByTag解决：我们add fragment的时候添加一个tag，当系统异常重新启动activity和fragment的时候 我们通过判断onCreateView(inflater, container, savedInstanceState)中的savedInstanceState！=null来找到系统帮我恢复的fragment并赋值给你的变量中制定的fragment。进行判空操作.如果为空,创建对象,add上去;如果不为空,直接show出来(注意不要使用remove方法移除,hide即可)；
+2. 简单的做法,就是给每层fragment加上背景色,重叠后也就看不见了，实际上上次的Fragment没有被回收，存在消耗资源；
+3. 注释掉Activity中onSaveInstanceState()里super.onSaveInstanceState(outState)代码，但是此时注意Activity异常回收时不会保存状态需要自己保存；
+
+
+****
+
+<h2 id="Activity与Fragment的通信">
+Activity与Fragment的通信
+</h2>
+
+[返回目录](#目录)
+
+1. **Activity向Fragment传值：** 在Activity中通过fragment.setArguments(Bundle)传值，这种方式只适用还没有显示的Fragment（注：Fragment只能新建），在Fragment中，通过Fragment.getArguments()获取Bundle，获取后先判空
+2. **Fragment向Activity传值：** 在Activity中定义一个公共的方法，参数设置为要传值的数据类型，在Fragment中通过getActivity()可以获取到宿主的activity对象【MainActivity mActivity=(MainActivity) getActivity()】，在使用这个对象调用那个公共的方法，把数据传给方法的参数
+
+
+- Activity多次调用Fragment的setArguments方法会崩溃？现在测试还没有
 
 ******************************************************************************************************************************************************************************************************************
 ******************************************************************************************************************************************************************************************************************
