@@ -221,8 +221,27 @@ Service的启动方式及生命周期
 3. 以上两种方式在ContentProvider的方法没有执行完成前都会阻塞调用者，因此会阻塞UI线程
 
 
-- 两个Fragment之间如何进行通信？
-- Fragment的重影问题，依附的Activity被销毁，短生命周期持有常生命周期的引用
+****
+
+<h2 id="两个Fragment之间如何进行通信？">
+两个Fragment之间如何进行通信？
+</h2>
+
+[返回目录](#目录)
+
+可以通过getSupportFragmentManager()拿到FragmentManager，然后通过FragmentManager的findFragmentByTag或者findFragmentById拿到我们需要通信的Fragment（比如说在下面的DEMO中我们用的是FragmentTabHost，所以就使用findFragmentByTag拿到Fragment，如果Fragment是直接在XML中定义的，那么就使用findFragmentById拿到Fragment），然后就可以对拿到的Fragment进行各种操作了。
+
+
+****
+
+<h2 id="如何解决Fragment的重影问题">
+如何解决Fragment的重影问题
+</h2>
+
+[返回目录](#目录)
+
+依附的Activity被销毁，短生命周期持有常生命周期的引用
+
 - Activity与Fragment的通信
 - Activity多次调用Fragment的setArguments方法会崩溃
 
