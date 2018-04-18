@@ -438,7 +438,6 @@ Activity与Fragment的通信
 - Android中Java和JavaScript如何交互？
 - 知道什么是ART吗？它和Dalvik有什么区别？
 - 如何对SQLite数据库中进行大量的数据插入？
-- 知道什么是ART吗？它和Dalvik有什么区别？
 - 运行时权限、Design风格、
 - Android6.0/7.0/8.0特性，kotlin语言，I/O大会
 - 你在公司中用的什么代码管理，如何解决git冲突；你说用的代码管理工具什么，为什么会产生代码冲突，该如何解决
